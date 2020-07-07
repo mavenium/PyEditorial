@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'constance',
+    'constance.backends.database',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +121,34 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# CONSTANCE Settings
+CONSTANCE_BACKEND = 'constance.backends.memory.MemoryBackend'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+CONSTANCE_DATABASE_CACHE_BACKEND = 'default'
+
+CONSTANCE_ADDITIONAL_FIELDS = {
+    'yes_no_null_select': ['django.forms.fields.ChoiceField', {
+        'widget': 'django.forms.Select',
+        'choices': ((None, "-----"), ("yes", "Yes"), ("no", "No"))
+    }],
+    'image_field': ['django.forms.ImageField', {}]
+}
+
+CONSTANCE_CONFIG = {
+    'THE_ANSWER': (42, 'Answer to the Ultimate Question of Life'),
+    'MY_SELECT_KEY': ('yes', 'select yes or no', 'yes_no_null_select'),
+    'LOGO_IMAGE': ('default.png', 'Company logo', 'image_field'),
+}
+
+CONSTANCE_CONFIG_FIELDSETS = {
+    'General Options': ('THE_ANSWER', 'MY_SELECT_KEY'),
+    'Theme Options': ('LOGO_IMAGE',),
+}
+# CONSTANCE Settings
