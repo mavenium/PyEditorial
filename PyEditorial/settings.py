@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'constance',
     'constance.backends.database',
+    'ckeditor',
+    'ckeditor_uploader',
     'blog.apps.BlogConfig',
 ]
 
@@ -128,6 +130,9 @@ STATICFILES_DIRS = [
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# CKEditor
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # CONSTANCE Settings
 CONSTANCE_BACKEND = 'constance.backends.memory.MemoryBackend'
