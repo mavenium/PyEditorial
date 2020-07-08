@@ -26,49 +26,49 @@
                                     {% if config.SOCIAL_NETWORKS_TWITTER_URL != '#' %}
                                         <li><a href="{{ config.SOCIAL_NETWORKS_TWITTER_URL }}" class="icon brands fa-twitter" title="Twitter"><span class="label">Twitter</span></a></li>
                                     {% endif %}
-                                    {% if config.SOCIAL_NETWORKS_FACEBOOK_URL != '#'%}
+                                    {% if config.SOCIAL_NETWORKS_FACEBOOK_URL != '#' %}
                                         <li><a href="{{ config.SOCIAL_NETWORKS_FACEBOOK_URL }}" class="icon brands fa-facebook-f" title="Facebook"><span class="label">Facebook</span></a></li>
                                     {% endif %}
-                                    {% if config.SOCIAL_NETWORKS_SNAPCHAT_URL != '#'%}
+                                    {% if config.SOCIAL_NETWORKS_SNAPCHAT_URL != '#' %}
                                         <li><a href="{{ config.SOCIAL_NETWORKS_SNAPCHAT_URL }}" class="icon brands fa-snapchat-ghost" title="Snapchat"><span class="label">Snapchat</span></a></li>
                                     {% endif %}
-                                    {% if config.SOCIAL_NETWORKS_INSTAGRAM_URL != '#'%}
+                                    {% if config.SOCIAL_NETWORKS_INSTAGRAM_URL != '#' %}
                                         <li><a href="{{ config.SOCIAL_NETWORKS_INSTAGRAM_URL }}" class="icon brands fa-instagram" title="Instagram"><span class="label">Instagram</span></a></li>
                                     {% endif %}
-                                    {% if config.SOCIAL_NETWORKS_MEDIUM_URL != '#'%}
+                                    {% if config.SOCIAL_NETWORKS_MEDIUM_URL != '#' %}
                                         <li><a href="{{ config.SOCIAL_NETWORKS_MEDIUM_URL }}" class="icon brands fa-medium-m" title="Medium"><span class="label">Medium</span></a></li>
                                     {% endif %}
-                                    {% if config.SOCIAL_NETWORKS_TELEGRAM_URL != '#'%}
+                                    {% if config.SOCIAL_NETWORKS_TELEGRAM_URL != '#' %}
                                         <li><a href="{{ config.SOCIAL_NETWORKS_TELEGRAM_URL }}" class="icon brands fa-telegram" title="Telegram"><span class="label">Telegram</span></a></li>
                                     {% endif %}
-                                    {% if config.SOCIAL_NETWORKS_GITHUB_URL != '#'%}
+                                    {% if config.SOCIAL_NETWORKS_GITHUB_URL != '#' %}
                                         <li><a href="{{ config.SOCIAL_NETWORKS_GITHUB_URL }}" class="icon brands fa-github" title="Github"><span class="label">Github</span></a></li>
                                     {% endif %}
-                                    {% if config.SOCIAL_NETWORKS_GITLAB_URL != '#'%}
+                                    {% if config.SOCIAL_NETWORKS_GITLAB_URL != '#' %}
                                         <li><a href="{{ config.SOCIAL_NETWORKS_GITLAB_URL }}" class="icon brands fa-gitlab" title="Gitlab"><span class="label">Gitlab</span></a></li>
                                     {% endif %}
                                 </ul>
                             </header>
                             <!-- /Header -->
 
+                            {% for last_post in last_blog_post %}
 							<!-- Banner -->
                             <section id="banner">
                                 <div class="content">
                                     <header>
-                                        <h1>Hi, I’m Editorial<br />
-                                        by HTML5 UP</h1>
-                                        <p>A free and fully responsive site template</p>
+                                        <h1>{{ last_post.title }}</h1>
                                     </header>
-                                    <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+                                    <p>{{ last_post.content | safe | truncatewords_html:30 }}</p>
                                     <ul class="actions">
-                                        <li><a href="#" class="button big">Learn More</a></li>
+                                        <li><a href="{{ last_post.slug }}" class="button big">Learn More</a></li>
                                     </ul>
                                 </div>
                                 <span class="image object">
-                                    <img src="images/pic10.jpg" alt="" />
+                                    <img src="{{ last_post.thumbnail.url }}" alt="{{ last_post.title }}" />
                                 </span>
                             </section>
                             <!-- /Banner -->
+                            {% endfor %}
 
 							<!-- Section -->
                             <section>
