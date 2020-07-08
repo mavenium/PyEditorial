@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'constance',
     'constance.backends.database',
+    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
