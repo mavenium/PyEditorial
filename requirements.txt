@@ -4,5 +4,6 @@ django-ckeditor==5.9.0
 django-constance==2.7.0
 django-js-asset==1.2.2
 django-picklefield==3.0.1
+Pillow==7.2.0
 pytz==2020.1
 sqlparse==0.3.1
