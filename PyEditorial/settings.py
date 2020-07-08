@@ -137,6 +137,8 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 # CONSTANCE Settings
 CONSTANCE_BACKEND = 'constance.backends.memory.MemoryBackend'
 
+CONSTANCE_IGNORE_ADMIN_VERSION_CHECK = True
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
