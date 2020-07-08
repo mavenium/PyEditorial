@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'constance',
     'constance.backends.database',
-    'core',
 ]
 
 MIDDLEWARE = [
@@ -134,21 +133,58 @@ CACHES = {
 CONSTANCE_DATABASE_CACHE_BACKEND = 'default'
 
 CONSTANCE_ADDITIONAL_FIELDS = {
-    'yes_no_null_select': ['django.forms.fields.ChoiceField', {
+    'yes_no_select': ['django.forms.fields.ChoiceField', {
         'widget': 'django.forms.Select',
-        'choices': ((None, "-----"), ("yes", "Yes"), ("no", "No"))
+        'choices': (("yes", "Yes"), ("no", "No"))
     }],
     'image_field': ['django.forms.ImageField', {}]
 }
 
 CONSTANCE_CONFIG = {
-    'THE_ANSWER': (42, 'Answer to the Ultimate Question of Life'),
-    'MY_SELECT_KEY': ('yes', 'select yes or no', 'yes_no_null_select'),
-    'LOGO_IMAGE': ('default.png', 'Company logo', 'image_field'),
+    'SITE_TITLE': ('My Blog', 'Title of this site!', str),
+    'SITE_DESCRIPTION': ('Blog Description', 'Description of this site!', str),
+    'SITE_FAVICON': ('default_favicon.png', 'Favicon of this site!', 'image_field'),
+
+    'GET_IN_TOUCH_ACTIVE': ('yes', '"Get in touch" section is active?', 'yes_no_select'),
+    'GET_IN_TOUCH_INFO': ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', '"Get in touch" information text', str),
+    'GET_IN_TOUCH_EMAIL_ADDRESS': ('information@untitled.tld', '"Get in touch" email address', str),
+    'GET_IN_TOUCH_PHONE': ('(000) 000-0000', '"Get in touch" phone number', str),
+    'GET_IN_TOUCH_ADDRESS': ('1234 Somewhere Road #8254<br />Nashville, TN 00000-0000', '"Get in touch" address', str),
+
+    'SOCIAL_NETWORKS_FACEBOOK_URL': ('#', 'Social Networks - Facebook', str),
+    'SOCIAL_NETWORKS_TWITTER_URL': ('#', 'Social Networks - Twitter', str),
+    'SOCIAL_NETWORKS_SNAPCHAT_URL': ('#', 'Social Networks - Snapchat', str),
+    'SOCIAL_NETWORKS_INSTAGRAM_URL': ('#', 'Social Networks - Instagram', str),
+    'SOCIAL_NETWORKS_MEDIUM_URL': ('#', 'Social Networks - Medium', str),
+    'SOCIAL_NETWORKS_TELEGRAM_URL': ('#', 'Social Networks - Telegram', str),
+    'SOCIAL_NETWORKS_GITHUB_URL': ('#', 'Social Networks - Github', str),
+    'SOCIAL_NETWORKS_GITLAB_URL': ('#', 'Social Networks - Gitlab', str),
+
+    # 'GET_IN_TOUCH_PASHM': (True, '"Get in touch" pashm', bool),
 }
 
 CONSTANCE_CONFIG_FIELDSETS = {
-    'General Options': ('THE_ANSWER', 'MY_SELECT_KEY'),
-    'Theme Options': ('LOGO_IMAGE',),
+    'General Options': (
+        'SITE_TITLE',
+        'SITE_DESCRIPTION',
+        'SITE_FAVICON',
+    ),
+    '"Get in touch" Options': (
+        'GET_IN_TOUCH_ACTIVE',
+        'GET_IN_TOUCH_INFO',
+        'GET_IN_TOUCH_EMAIL_ADDRESS',
+        'GET_IN_TOUCH_PHONE',
+        'GET_IN_TOUCH_ADDRESS',
+    ),
+    '"Social Networks" Options': (
+        'SOCIAL_NETWORKS_FACEBOOK_URL',
+        'SOCIAL_NETWORKS_TWITTER_URL',
+        'SOCIAL_NETWORKS_SNAPCHAT_URL',
+        'SOCIAL_NETWORKS_INSTAGRAM_URL',
+        'SOCIAL_NETWORKS_MEDIUM_URL',
+        'SOCIAL_NETWORKS_TELEGRAM_URL',
+        'SOCIAL_NETWORKS_GITHUB_URL',
+        'SOCIAL_NETWORKS_GITLAB_URL',
+    ),
 }
 # CONSTANCE Settings
