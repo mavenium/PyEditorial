@@ -2140,10 +2140,10 @@ button,
     width: 50%; }
     #banner .image img {
       height: 100%;
-      -moz-object-fit: cover;
-      -webkit-object-fit: cover;
-      -ms-object-fit: cover;
-      object-fit: cover;
+      -moz-object-fit: fill;
+      -webkit-object-fit: fill;
+      -ms-object-fit: fill;
+      object-fit: fill;
       -moz-object-position: center;
       -webkit-object-position: center;
       -ms-object-position: center;
