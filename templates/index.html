@@ -1,11 +1,14 @@
 {% load static %}
-<!DOCTYPE HTML>
+{% get_media_prefix as MEDIA_URL %}
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>Editorial by HTML5 UP</title>
+		<title>{{ config.SITE_TITLE }}</title>
+        <meta name="description" content="{{ config.SITE_DESCRIPTION }}">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static '/assets/css/main.css' %}" />
+        <link rel="icon" href="{{ MEDIA_URL }}{{ config.SITE_FAVICON }}" type="image/png" sizes="16x16">
 	</head>
 	<body class="is-preload">
 
@@ -17,128 +20,151 @@
 						<div class="inner">
 
 							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
-									</ul>
-								</header>
+                            <header id="header">
+                                <a href="{% url 'index' %}" class="logo"><strong>{{ config.SITE_TITLE }}</strong></a>
+                                <ul class="icons">
+                                    {% if config.SOCIAL_NETWORKS_TWITTER_URL != '#' %}
+                                        <li><a href="{{ config.SOCIAL_NETWORKS_TWITTER_URL }}" class="icon brands fa-twitter" title="Twitter"><span class="label">Twitter</span></a></li>
+                                    {% endif %}
+                                    {% if config.SOCIAL_NETWORKS_FACEBOOK_URL != '#'%}
+                                        <li><a href="{{ config.SOCIAL_NETWORKS_FACEBOOK_URL }}" class="icon brands fa-facebook-f" title="Facebook"><span class="label">Facebook</span></a></li>
+                                    {% endif %}
+                                    {% if config.SOCIAL_NETWORKS_SNAPCHAT_URL != '#'%}
+                                        <li><a href="{{ config.SOCIAL_NETWORKS_SNAPCHAT_URL }}" class="icon brands fa-snapchat-ghost" title="Snapchat"><span class="label">Snapchat</span></a></li>
+                                    {% endif %}
+                                    {% if config.SOCIAL_NETWORKS_INSTAGRAM_URL != '#'%}
+                                        <li><a href="{{ config.SOCIAL_NETWORKS_INSTAGRAM_URL }}" class="icon brands fa-instagram" title="Instagram"><span class="label">Instagram</span></a></li>
+                                    {% endif %}
+                                    {% if config.SOCIAL_NETWORKS_MEDIUM_URL != '#'%}
+                                        <li><a href="{{ config.SOCIAL_NETWORKS_MEDIUM_URL }}" class="icon brands fa-medium-m" title="Medium"><span class="label">Medium</span></a></li>
+                                    {% endif %}
+                                    {% if config.SOCIAL_NETWORKS_TELEGRAM_URL != '#'%}
+                                        <li><a href="{{ config.SOCIAL_NETWORKS_TELEGRAM_URL }}" class="icon brands fa-telegram" title="Telegram"><span class="label">Telegram</span></a></li>
+                                    {% endif %}
+                                    {% if config.SOCIAL_NETWORKS_GITHUB_URL != '#'%}
+                                        <li><a href="{{ config.SOCIAL_NETWORKS_GITHUB_URL }}" class="icon brands fa-github" title="Github"><span class="label">Github</span></a></li>
+                                    {% endif %}
+                                    {% if config.SOCIAL_NETWORKS_GITLAB_URL != '#'%}
+                                        <li><a href="{{ config.SOCIAL_NETWORKS_GITLAB_URL }}" class="icon brands fa-gitlab" title="Gitlab"><span class="label">Gitlab</span></a></li>
+                                    {% endif %}
+                                </ul>
+                            </header>
+                            <!-- /Header -->
 
 							<!-- Banner -->
-								<section id="banner">
-									<div class="content">
-										<header>
-											<h1>Hi, I’m Editorial<br />
-											by HTML5 UP</h1>
-											<p>A free and fully responsive site template</p>
-										</header>
-										<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
-										<ul class="actions">
-											<li><a href="#" class="button big">Learn More</a></li>
-										</ul>
-									</div>
-									<span class="image object">
-										<img src="images/pic10.jpg" alt="" />
-									</span>
-								</section>
+                            <section id="banner">
+                                <div class="content">
+                                    <header>
+                                        <h1>Hi, I’m Editorial<br />
+                                        by HTML5 UP</h1>
+                                        <p>A free and fully responsive site template</p>
+                                    </header>
+                                    <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+                                    <ul class="actions">
+                                        <li><a href="#" class="button big">Learn More</a></li>
+                                    </ul>
+                                </div>
+                                <span class="image object">
+                                    <img src="images/pic10.jpg" alt="" />
+                                </span>
+                            </section>
+                            <!-- /Banner -->
 
 							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Erat lacinia</h2>
-									</header>
-									<div class="features">
-										<article>
-											<span class="icon fa-gem"></span>
-											<div class="content">
-												<h3>Portitor ullamcorper</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon solid fa-paper-plane"></span>
-											<div class="content">
-												<h3>Sapien veroeros</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon solid fa-rocket"></span>
-											<div class="content">
-												<h3>Quam lorem ipsum</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon solid fa-signal"></span>
-											<div class="content">
-												<h3>Sed magna finibus</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											</div>
-										</article>
-									</div>
-								</section>
+                            <section>
+                                <header class="major">
+                                    <h2>Erat lacinia</h2>
+                                </header>
+                                <div class="features">
+                                    <article>
+                                        <span class="icon fa-gem"></span>
+                                        <div class="content">
+                                            <h3>Portitor ullamcorper</h3>
+                                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        </div>
+                                    </article>
+                                    <article>
+                                        <span class="icon solid fa-paper-plane"></span>
+                                        <div class="content">
+                                            <h3>Sapien veroeros</h3>
+                                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        </div>
+                                    </article>
+                                    <article>
+                                        <span class="icon solid fa-rocket"></span>
+                                        <div class="content">
+                                            <h3>Quam lorem ipsum</h3>
+                                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        </div>
+                                    </article>
+                                    <article>
+                                        <span class="icon solid fa-signal"></span>
+                                        <div class="content">
+                                            <h3>Sed magna finibus</h3>
+                                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        </div>
+                                    </article>
+                                </div>
+                            </section>
+                            <!-- /Section -->
 
 							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Ipsum sed dolor</h2>
-									</header>
-									<div class="posts">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<h3>Interdum aenean</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<h3>Nulla amet dolore</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-											<h3>Tempus ullamcorper</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-											<h3>Sed etiam facilis</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-											<h3>Feugiat lorem aenean</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
-											<h3>Amet varius aliquam</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-									</div>
-								</section>
+                            <section>
+                                <header class="major">
+                                    <h2>Ipsum sed dolor</h2>
+                                </header>
+                                <div class="posts">
+                                    <article>
+                                        <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+                                        <h3>Interdum aenean</h3>
+                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        <ul class="actions">
+                                            <li><a href="#" class="button">More</a></li>
+                                        </ul>
+                                    </article>
+                                    <article>
+                                        <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+                                        <h3>Nulla amet dolore</h3>
+                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        <ul class="actions">
+                                            <li><a href="#" class="button">More</a></li>
+                                        </ul>
+                                    </article>
+                                    <article>
+                                        <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
+                                        <h3>Tempus ullamcorper</h3>
+                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        <ul class="actions">
+                                            <li><a href="#" class="button">More</a></li>
+                                        </ul>
+                                    </article>
+                                    <article>
+                                        <a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+                                        <h3>Sed etiam facilis</h3>
+                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        <ul class="actions">
+                                            <li><a href="#" class="button">More</a></li>
+                                        </ul>
+                                    </article>
+                                    <article>
+                                        <a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
+                                        <h3>Feugiat lorem aenean</h3>
+                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        <ul class="actions">
+                                            <li><a href="#" class="button">More</a></li>
+                                        </ul>
+                                    </article>
+                                    <article>
+                                        <a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
+                                        <h3>Amet varius aliquam</h3>
+                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        <ul class="actions">
+                                            <li><a href="#" class="button">More</a></li>
+                                        </ul>
+                                    </article>
+                                </div>
+                        </section>
+                            <!-- /Section -->
 
 						</div>
 					</div>
@@ -213,36 +239,47 @@
 									</ul>
 								</section>
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
-									</ul>
-								</section>
+                            {% if config.GET_IN_TOUCH_ACTIVE == 'yes' %}
+							<!-- get_in_touch -->
+                            <section id="get_in_touch">
+                                <header class="major">
+                                    <h2>Get in touch</h2>
+                                </header>
+                                <p>{{ config.GET_IN_TOUCH_INFO | safe }}</p>
+                                <ul class="contact">
+                                    <li class="icon solid fa-envelope">
+                                        <a href="mailto:{{ config.GET_IN_TOUCH_EMAIL_ADDRESS }}">{{ config.GET_IN_TOUCH_EMAIL_ADDRESS }}</a>
+                                    </li>
+                                    <li class="icon solid fa-phone">
+                                        {{ config.GET_IN_TOUCH_PHONE }}
+                                    </li>
+                                    <li class="icon solid fa-home">
+                                        {{ config.GET_IN_TOUCH_ADDRESS | safe }}
+                                    </li>
+                                </ul>
+                            </section>
+                            <!-- /get_in_touch -->
+                            {% endif %}
 
 							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
+                            <footer id="footer">
+                                <p class="copyright">
+                                    &copy; Untitled. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>. CMS: <a href="https://github.com/mavenium/PyEditorial" title="PyEditorial">PyEditorial</a></p>
+                            </footer>
+                            <!-- /Footer -->
 
 						</div>
 					</div>
 
 			</div>
 
-		<!-- Scripts -->
-			<script src="{% static '/assets/js/jquery.min.js' %}"></script>
-			<script src="{% static '/assets/js/browser.min.js' %}"></script>
-			<script src="{% static '/assets/js/breakpoints.min.js' %}"></script>
-			<script src="{% static '/assets/js/util.js' %}"></script>
-			<script src="{% static '/assets/js/main.js' %}"></script>
+    <!-- Scripts -->
+    <script src="{% static '/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static '/assets/js/browser.min.js' %}"></script>
+    <script src="{% static '/assets/js/breakpoints.min.js' %}"></script>
+    <script src="{% static '/assets/js/util.js' %}"></script>
+    <script src="{% static '/assets/js/main.js' %}"></script>
+    <!-- /Scripts -->
 
 	</body>
 </html>
