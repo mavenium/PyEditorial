@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'constance.backends.database',
     'ckeditor',
     'ckeditor_uploader',
-    'blog.apps.BlogConfig',
+    'content.apps.ContentConfig',
 ]
 
 MIDDLEWARE = [

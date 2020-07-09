@@ -1,7 +1,6 @@
-from django.dispatch import receiver
 from django.views import generic
 
-from blog import models as BlogModels
+from content import models as ContentModels
 
 from constance import config
 
@@ -11,8 +10,8 @@ class Index(generic.ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['last_blog_post'] = BlogModels.Post.objects.order_by('-pk').filter(publish=True)[:1]
-        context['blog_posts'] = BlogModels.Post.objects.order_by('-pk').filter(publish=True)[1:5]
+        context['last_blog_post'] = ContentModels.Blog.objects.order_by('-pk').filter(publish=True)[:1]
+        context['blog_posts'] = ContentModels.Blog.objects.order_by('-pk').filter(publish=True)[1:5]
         context['config'] = config
         return context
 
