@@ -1,0 +1,39 @@
+from django.contrib import admin
+
+from . import models
+
+
+# Register your models here.
+class PostAdmin(admin.ModelAdmin):
+    list_display = ['title', 'display_category']
+    models.Blog.display_category.short_description = 'Categories'
+    prepopulated_fields = {'slug': ('title',)}
+
+
+admin.site.register(models.Blog, PostAdmin)
+
+admin.site.register(models.BlogCategory)
+
+
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ['title', 'display_category']
+    models.Video.display_category.short_description = 'Categories'
+    prepopulated_fields = {'slug': ('title',)}
+
+
+admin.site.register(models.Video, VideoAdmin)
+
+admin.site.register(models.VideocastCategory)
+
+
+class PodcastAdmin(admin.ModelAdmin):
+    list_display = ['title', 'display_category']
+    models.Podcast.display_category.short_description = 'Categories'
+    prepopulated_fields = {'slug': ('title',)}
+
+
+admin.site.register(models.Podcast, PodcastAdmin)
+
+admin.site.register(models.PodcastCategory)
+
+admin.site.register(models.Skill)
