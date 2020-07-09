@@ -12,6 +12,7 @@ class Index(generic.ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['last_blog_post'] = BlogModels.Post.objects.order_by('-pk')[:1]
+        context['blog_posts'] = BlogModels.Post.objects.order_by('-pk')[1:5]
         context['config'] = config
         return context
 

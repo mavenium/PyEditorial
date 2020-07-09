@@ -60,7 +60,11 @@
                                     </header>
                                     <p>{{ last_post.content | safe | truncatewords_html:30 }}</p>
                                     <ul class="actions">
-                                        <li><a href="{{ last_post.slug }}" class="button big">Learn More</a></li>
+                                        <li>
+                                            <a href="{{ last_post.slug }}" class="button big" title="{{ last_post.title }}">
+                                                Learn More
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <span class="image object">
@@ -111,57 +115,23 @@
 							<!-- Section -->
                             <section>
                                 <header class="major">
-                                    <h2>Ipsum sed dolor</h2>
+                                    <h2>Last Blog Posts</h2>
                                 </header>
                                 <div class="posts">
+                                    {% for blog_post in blog_posts %}
                                     <article>
-                                        <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-                                        <h3>Interdum aenean</h3>
-                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        <a href="{{ blog_post.slug }}" class="image" title="{{ blog_post.title }}">
+                                            <img src="{{ blog_post.thumbnail.url }}" alt="{{ blog_post.title }}" />
+                                        </a>
+                                        <h3>{{ blog_post.title }}</h3>
+                                        <p>{{ blog_post.content | safe | truncatewords_html:30 }}</p>
                                         <ul class="actions">
-                                            <li><a href="#" class="button">More</a></li>
+                                            <li>
+                                                <a href="{{ blog_post.slug }}" class="button" title="{{ blog_post.title }}">More</a>
+                                            </li>
                                         </ul>
                                     </article>
-                                    <article>
-                                        <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-                                        <h3>Nulla amet dolore</h3>
-                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                                        <ul class="actions">
-                                            <li><a href="#" class="button">More</a></li>
-                                        </ul>
-                                    </article>
-                                    <article>
-                                        <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-                                        <h3>Tempus ullamcorper</h3>
-                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                                        <ul class="actions">
-                                            <li><a href="#" class="button">More</a></li>
-                                        </ul>
-                                    </article>
-                                    <article>
-                                        <a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-                                        <h3>Sed etiam facilis</h3>
-                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                                        <ul class="actions">
-                                            <li><a href="#" class="button">More</a></li>
-                                        </ul>
-                                    </article>
-                                    <article>
-                                        <a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-                                        <h3>Feugiat lorem aenean</h3>
-                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                                        <ul class="actions">
-                                            <li><a href="#" class="button">More</a></li>
-                                        </ul>
-                                    </article>
-                                    <article>
-                                        <a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
-                                        <h3>Amet varius aliquam</h3>
-                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                                        <ul class="actions">
-                                            <li><a href="#" class="button">More</a></li>
-                                        </ul>
-                                    </article>
+                                    {% endfor %}
                                 </div>
                         </section>
                             <!-- /Section -->
