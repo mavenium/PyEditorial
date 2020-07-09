@@ -10,20 +10,10 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
-admin.site.register(models.Blog, PostAdmin)
-
-admin.site.register(models.BlogCategory)
-
-
 class VideoAdmin(admin.ModelAdmin):
     list_display = ['title', 'display_category']
     models.Video.display_category.short_description = 'Categories'
     prepopulated_fields = {'slug': ('title',)}
-
-
-admin.site.register(models.Video, VideoAdmin)
-
-admin.site.register(models.VideocastCategory)
 
 
 class PodcastAdmin(admin.ModelAdmin):
@@ -31,6 +21,14 @@ class PodcastAdmin(admin.ModelAdmin):
     models.Podcast.display_category.short_description = 'Categories'
     prepopulated_fields = {'slug': ('title',)}
 
+
+admin.site.register(models.Blog, PostAdmin)
+
+admin.site.register(models.BlogCategory)
+
+admin.site.register(models.Video, VideoAdmin)
+
+admin.site.register(models.VideocastCategory)
 
 admin.site.register(models.Podcast, PodcastAdmin)
 
