@@ -14,9 +14,9 @@ class Index(generic.ListView):
         context['skills'] = ContentModels.Skill.objects.all()
         context['blogs'] = ContentModels.Blog.objects.order_by('-pk').filter(publish=True)[1:5]
         context['blogs_categories'] = ContentModels.BlogCategory.objects.all()
-        context['videocasts'] = ContentModels.Videocast.objects.order_by('-pk').filter(publish=True)[1:5]
+        context['videocasts'] = ContentModels.Videocast.objects.order_by('-pk').filter(publish=True)[:4]
         context['videocasts_categories'] = ContentModels.VideocastCategory.objects.all()
-        context['podcast'] = ContentModels.Podcast.objects.order_by('-pk').filter(publish=True)[1:5]
+        context['podcasts'] = ContentModels.Podcast.objects.order_by('-pk').filter(publish=True)[:2]
         context['podcast_categories'] = ContentModels.PodcastCategory.objects.all()
         context['config'] = config
         return context

@@ -96,7 +96,7 @@
 							<!-- Section - blog -->
                             <section id="blog">
                                 <header class="major">
-                                    <h2>Last Blog Posts</h2>
+                                    <h2>The latest Blogs</h2>
                                 </header>
                                 <div class="posts">
                                     {% for blog_post in blogs %}
@@ -120,7 +120,7 @@
 							<!-- Section - Videocast -->
                             <section id="videocast">
                                 <header class="major">
-                                    <h2>Last Videocast Posts</h2>
+                                    <h2>The latest Videocasts</h2>
                                 </header>
                                 <div class="posts">
                                     {% for videocast in videocasts %}
@@ -162,7 +162,7 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.html">Homepage</a></li>
+										<li><a href="{% url 'index' %}">Homepage</a></li>
 										<li><a href="generic.html">Generic</a></li>
 										<li><a href="elements.html">Elements</a></li>
 										<li>
@@ -190,29 +190,24 @@
 										<li><a href="#">Amet Lacinia</a></li>
 									</ul>
 								</nav>
+                        <!-- /Menu -->
 
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>Ante interdum</h2>
+										<h2>The latest Podcasts</h2>
 									</header>
 									<div class="mini-posts">
+                                        {% for podcast in podcasts %}
 										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+											<a href="{{ podcast.slug }}" class="image">
+                                                <img src="{{ podcast.thumbnail.url }}" alt="{{ podcast.title }}" />
+                                            </a>
+											<p>{{ podcast.content | safe |truncatewords_html:15 }}</p>
+                                            <a href="{{ podcast.slug }}" class="button">More</a>
 										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
+                                        {% endfor %}
 									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
 								</section>
 
                             {% if config.GET_IN_TOUCH_ACTIVE == 'yes' %}
