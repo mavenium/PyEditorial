@@ -1,5 +1,5 @@
 # PyEditorial
-A free, open source Blog CMS based on "Django" and "Editorial" HTML5 theme.
+A free, open-source Blog CMS based on the "Django" and "Editorial" HTML5 theme.
 
 ![](https://img.shields.io/github/stars/mavenium/PyEditorial) ![](https://img.shields.io/github/forks/mavenium/PyEditorial) ![](https://img.shields.io/github/issues/mavenium/PyEditorial) ![](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fmavenium%2FPyEditorial)
 
