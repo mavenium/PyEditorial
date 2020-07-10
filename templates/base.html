@@ -89,25 +89,25 @@
                         <span class="opener">Blog Categories</span>
                         <ul>
                             {% for blogs_category in blogs_categories %}
-                                <li><a href="#">{{ blogs_category.title }}</a></li>
+                                <li><a href="{% url 'content:blog_archive_by_category_pk' blogs_category.pk %}">{{ blogs_category.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
-                    <li><a href="elements.html">Videocast</a></li>
+                    <li><a href="{% url 'content:videocast' %}">Videocast</a></li>
                     <li>
                         <span class="opener">Videocast Categories</span>
                         <ul>
                             {% for videocasts_category in videocasts_categories %}
-                                <li><a href="#">{{ videocasts_category.title }}</a></li>
+                                <li><a href="{% url 'content:videocast_archive_by_category_pk' videocasts_category.pk %}">{{ videocasts_category.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
-                    <li><a href="elements.html">Podcast</a></li>
+                    <li><a href="{% url 'content:podcast' %}">Podcast</a></li>
                     <li>
                         <span class="opener">Podcast Categories</span>
                         <ul>
                             {% for podcast_category in podcast_categories %}
-                                <li><a href="#">{{ podcast_category.title }}</a></li>
+                                <li><a href="{% url 'content:podcast_archive_by_category_pk' podcast_category.pk %}">{{ podcast_category.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
@@ -123,11 +123,11 @@
                 <div class="mini-posts">
                     {% for podcast in podcasts %}
                         <article>
-                            <a href="{{ podcast.slug }}" class="image">
+                            <a href="{% url 'content:podcast_single' podcast.slug %}" class="image">
                                 <img src="{{ podcast.thumbnail.url }}" alt="{{ podcast.title }}"/>
                             </a>
                             <p>{{ podcast.content | safe |truncatewords_html:15 }}</p>
-                            <a href="{{ podcast.slug }}" class="button">More</a>
+                            <a href="{% url 'content:podcast_single' podcast.slug %}" class="button">More</a>
                         </article>
                     {% endfor %}
                 </div>

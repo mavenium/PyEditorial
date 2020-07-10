@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Section - archive -->
+    <section id="archive">
+        <header class="major">
+            <h2>Archive</h2>
+        </header>
+        <div class="posts">
+            {% for archive in archives %}
+                <article>
+                    <a href="{{ request.path }}{{ archive.slug }}" class="image" title="{{ archive.title }}">
+                        <img src="{{ archive.thumbnail.url }}" alt="{{ archive.title }}"/>
+                    </a>
+                    <h3>{{ archive.title }}</h3>
+                    <p>{{ archive.content | safe | truncatewords_html:30 }}</p>
+                    <ul class="actions">
+                        <li>
+                            <a href="{{ request.path }}{{ archive.slug }}" class="button" title="{{ archive.title }}">More</a>
+                        </li>
+                    </ul>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- /Section - archive -->
+{% endblock %}

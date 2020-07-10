@@ -10,15 +10,15 @@
                 <p>{{ last_post.content | safe | truncatewords_html:30 }}</p>
                 <ul class="actions">
                     <li>
-                        <a href="{{ last_post.slug }}" class="button big" title="{{ last_post.title }}">
+                        <a href="{% url 'content:blog_single' last_post.slug %}" class="button big" title="{{ last_post.title }}">
                             Learn More
                         </a>
                     </li>
                 </ul>
             </div>
             <span class="image object">
-                        <img src="{{ last_post.thumbnail.url }}" alt="{{ last_post.title }}"/>
-                    </span>
+                <img src="{{ last_post.thumbnail.url }}" alt="{{ last_post.title }}"/>
+            </span>
         </section>
         <!-- /Banner -->
     {% endfor %}
@@ -50,14 +50,14 @@
         <div class="posts">
             {% for blog_post in blogs %}
                 <article>
-                    <a href="{{ blog_post.slug }}" class="image" title="{{ blog_post.title }}">
+                    <a href="{% url 'content:blog_single' blog_post.slug %}" class="image" title="{{ blog_post.title }}">
                         <img src="{{ blog_post.thumbnail.url }}" alt="{{ blog_post.title }}"/>
                     </a>
                     <h3>{{ blog_post.title }}</h3>
                     <p>{{ blog_post.content | safe | truncatewords_html:30 }}</p>
                     <ul class="actions">
                         <li>
-                            <a href="{{ blog_post.slug }}" class="button" title="{{ blog_post.title }}">More</a>
+                            <a href="{% url 'content:blog_single' blog_post.slug %}" class="button" title="{{ blog_post.title }}">More</a>
                         </li>
                     </ul>
                 </article>
@@ -74,14 +74,14 @@
         <div class="posts">
             {% for videocast in videocasts %}
                 <article>
-                    <a href="{{ videocast.slug }}" class="image" title="{{ videocast.title }}">
+                    <a href="{% url 'content:videocast_single' videocast.slug %}" class="image" title="{{ videocast.title }}">
                         <img src="{{ videocast.thumbnail.url }}" alt="{{ videocast.title }}"/>
                     </a>
                     <h3>{{ videocast.title }}</h3>
                     <p>{{ videocast.content | safe | truncatewords_html:30 }}</p>
                     <ul class="actions">
                         <li>
-                            <a href="{{ videocast.slug }}" class="button" title="{{ videocast.title }}">More</a>
+                            <a href="{% url 'content:videocast_single' videocast.slug %}" class="button" title="{{ videocast.title }}">More</a>
                         </li>
                     </ul>
                 </article>

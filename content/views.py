@@ -34,10 +34,81 @@ class Index(Base):
 
 
 class Blog(Base):
-    template_name = 'blog.html'
+    template_name = 'archive.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['blog_posts'] = ContentModels.Blog.objects.all()
+        context['archives'] = ContentModels.Blog.objects.all()
         return context
 
+
+class BlogArchiveByCategoryPK(Base):
+    template_name = 'archive.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['archives'] = ContentModels.Blog.objects.filter(category=self.kwargs['pk'])
+        return context
+
+
+class BlogSingle(Base):
+    template_name = 'single.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['single_content'] = ContentModels.Blog.objects.filter(slug=self.kwargs['slug'])
+        return context
+
+
+class Videocast(Base):
+    template_name = 'archive.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['archives'] = ContentModels.Videocast.objects.all()
+        return context
+
+
+class VideocastArchiveByCategoryPK(Base):
+    template_name = 'archive.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['archives'] = ContentModels.Videocast.objects.filter(category=self.kwargs['pk'])
+        return context
+
+
+class VideocastSingle(Base):
+    template_name = 'single.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['single_content'] = ContentModels.Videocast.objects.filter(slug=self.kwargs['slug'])
+        return context
+
+
+class Podcast(Base):
+    template_name = 'archive.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['archives'] = ContentModels.Podcast.objects.all()
+        return context
+
+
+class PodArchiveByCategoryPK(Base):
+    template_name = 'archive.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['archives'] = ContentModels.Podcast.objects.filter(category=self.kwargs['pk'])
+        return context
+
+
+class PodSingle(Base):
+    template_name = 'single.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['single_content'] = ContentModels.Podcast.objects.filter(slug=self.kwargs['slug'])
+        return context
