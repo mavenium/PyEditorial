@@ -30,8 +30,14 @@ class Index(Base):
         context['skills'] = ContentModels.Skill.objects.all()
         context['blogs'] = ContentModels.Blog.objects.order_by('-pk').filter(publish=True)[1:5]
         context['videocasts'] = ContentModels.Videocast.objects.order_by('-pk').filter(publish=True)[:4]
-        context['config'] = config
         return context
 
-    def get_queryset(self):
-        pass
+
+class Blog(Base):
+    template_name = 'blog.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['blog_posts'] = ContentModels.Blog.objects.all()
+        return context
+
