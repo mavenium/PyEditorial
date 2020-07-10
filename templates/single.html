@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for single in single_content %}
+    <!-- Content -->
+    <section>
+        <header class="main">
+            <h1>{{ single.title }}</h1>
+        </header>
+
+        <span class="image main">
+            <img src="{{ single.thumbnail.url }}" alt="{{ single.title }}"/>
+        </span>
+
+        {{ single.content | safe }}
+
+        {% if single.video %}
+            <a href="{{ single.video }}" class="button primary fit icon solid fa-video">Show Video</a>
+        {% endif %}
+
+        {% if single.audio %}
+            <a href="{{ single.audio.url }}" class="button primary fit icon solid fa-download">Download Audio</a>
+        {% endif %}
+
+    </section>
+    <!-- /Content -->
+    {% endfor %}
+{% endblock %}
