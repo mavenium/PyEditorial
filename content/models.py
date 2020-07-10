@@ -32,7 +32,7 @@ class VideocastCategory(models.Model):
         return self.title
 
 
-class Video(models.Model):
+class Videocast(models.Model):
     title = models.CharField(max_length=256, verbose_name="Title :", unique=True, null=False, blank=False)
     slug = models.SlugField(max_length=256, verbose_name="Slug :", unique=True, null=False, blank=False)
     thumbnail = models.ImageField(upload_to='content/video/thumbnail/', verbose_name="Thumbnail :")

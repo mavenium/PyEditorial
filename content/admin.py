@@ -12,7 +12,7 @@ class PostAdmin(admin.ModelAdmin):
 
 class VideoAdmin(admin.ModelAdmin):
     list_display = ['title', 'display_category']
-    models.Video.display_category.short_description = 'Categories'
+    models.Videocast.display_category.short_description = 'Categories'
     prepopulated_fields = {'slug': ('title',)}
 
 
@@ -26,7 +26,7 @@ admin.site.register(models.Blog, PostAdmin)
 
 admin.site.register(models.BlogCategory)
 
-admin.site.register(models.Video, VideoAdmin)
+admin.site.register(models.Videocast, VideoAdmin)
 
 admin.site.register(models.VideocastCategory)
 
