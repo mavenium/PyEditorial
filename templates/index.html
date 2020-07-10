@@ -51,7 +51,7 @@
                             </header>
                             <!-- /Header -->
 
-                            {% for last_post in last_blog_post %}
+                            {% for last_post in last_blog %}
 							<!-- Banner -->
                             <section id="banner">
                                 <div class="content">
@@ -74,40 +74,21 @@
                             <!-- /Banner -->
                             {% endfor %}
 
-							<!-- Section -->
-                            <section>
+							<!-- Section - Skills -->
+                            <section id="skills">
                                 <header class="major">
-                                    <h2>Erat lacinia</h2>
+                                    <h2>Skills</h2>
                                 </header>
                                 <div class="features">
+                                    {% for skill in skills %}
                                     <article>
-                                        <span class="icon fa-gem"></span>
+                                        <span class="icon solid {{ skill.icon }}"></span>
                                         <div class="content">
-                                            <h3>Portitor ullamcorper</h3>
-                                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                            <h3>{{ skill.title }}</h3>
+                                            <p>{{ skill.description }}</p>
                                         </div>
                                     </article>
-                                    <article>
-                                        <span class="icon solid fa-paper-plane"></span>
-                                        <div class="content">
-                                            <h3>Sapien veroeros</h3>
-                                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                                        </div>
-                                    </article>
-                                    <article>
-                                        <span class="icon solid fa-rocket"></span>
-                                        <div class="content">
-                                            <h3>Quam lorem ipsum</h3>
-                                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                                        </div>
-                                    </article>
-                                    <article>
-                                        <span class="icon solid fa-signal"></span>
-                                        <div class="content">
-                                            <h3>Sed magna finibus</h3>
-                                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                                        </div>
-                                    </article>
+                                    {% endfor %}
                                 </div>
                             </section>
                             <!-- /Section -->
@@ -118,7 +99,7 @@
                                     <h2>Last Blog Posts</h2>
                                 </header>
                                 <div class="posts">
-                                    {% for blog_post in blog_posts %}
+                                    {% for blog_post in blogs %}
                                     <article>
                                         <a href="{{ blog_post.slug }}" class="image" title="{{ blog_post.title }}">
                                             <img src="{{ blog_post.thumbnail.url }}" alt="{{ blog_post.title }}" />
@@ -136,6 +117,30 @@
                         </section>
                         <!-- /Section - blog -->
 
+							<!-- Section - Videocast -->
+                            <section id="videocast">
+                                <header class="major">
+                                    <h2>Last Videocast Posts</h2>
+                                </header>
+                                <div class="posts">
+                                    {% for videocast in videocasts %}
+                                    <article>
+                                        <a href="{{ videocast.slug }}" class="image" title="{{ videocast.title }}">
+                                            <img src="{{ videocast.thumbnail.url }}" alt="{{ videocast.title }}" />
+                                        </a>
+                                        <h3>{{ videocast.title }}</h3>
+                                        <p>{{ videocast.content | safe | truncatewords_html:30 }}</p>
+                                        <ul class="actions">
+                                            <li>
+                                                <a href="{{ videocast.slug }}" class="button" title="{{ videocast.title }}">More</a>
+                                            </li>
+                                        </ul>
+                                    </article>
+                                    {% endfor %}
+                                </div>
+                        </section>
+                        <!-- /Section - Videocast -->
+
 						</div>
 					</div>
 
@@ -149,8 +154,9 @@
 										<input type="text" name="query" id="query" placeholder="Search" />
 									</form>
 								</section>
+                        <!-- /Search -->
 
-							<!-- Menu -->
+                            <!-- Menu -->
 								<nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
