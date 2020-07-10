@@ -1,268 +1,92 @@
-{% load static %}
-{% get_media_prefix as MEDIA_URL %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ config.SITE_TITLE }}</title>
-    <meta name="description" content="{{ config.SITE_DESCRIPTION }}">
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    <link rel="stylesheet" href="{% static '/assets/css/main.css' %}"/>
-    <link rel="icon" href="{{ MEDIA_URL }}{{ config.SITE_FAVICON }}" type="image/png" sizes="16x16">
-</head>
-<body class="is-preload">
-
-<!-- Wrapper -->
-<div id="wrapper">
-
-    <!-- Main -->
-    <div id="main">
-        <div class="inner">
-
-            <!-- Header -->
-            <header id="header">
-                <a href="{% url 'index' %}" class="logo"><strong>{{ config.SITE_TITLE }}</strong></a>
-                <ul class="icons">
-                    {% if config.SOCIAL_NETWORKS_TWITTER_URL != '#' %}
-                        <li><a href="{{ config.SOCIAL_NETWORKS_TWITTER_URL }}" class="icon brands fa-twitter"
-                               title="Twitter"><span class="label">Twitter</span></a></li>
-                    {% endif %}
-                    {% if config.SOCIAL_NETWORKS_FACEBOOK_URL != '#' %}
-                        <li><a href="{{ config.SOCIAL_NETWORKS_FACEBOOK_URL }}" class="icon brands fa-facebook-f"
-                               title="Facebook"><span class="label">Facebook</span></a></li>
-                    {% endif %}
-                    {% if config.SOCIAL_NETWORKS_SNAPCHAT_URL != '#' %}
-                        <li><a href="{{ config.SOCIAL_NETWORKS_SNAPCHAT_URL }}" class="icon brands fa-snapchat-ghost"
-                               title="Snapchat"><span class="label">Snapchat</span></a></li>
-                    {% endif %}
-                    {% if config.SOCIAL_NETWORKS_INSTAGRAM_URL != '#' %}
-                        <li><a href="{{ config.SOCIAL_NETWORKS_INSTAGRAM_URL }}" class="icon brands fa-instagram"
-                               title="Instagram"><span class="label">Instagram</span></a></li>
-                    {% endif %}
-                    {% if config.SOCIAL_NETWORKS_MEDIUM_URL != '#' %}
-                        <li><a href="{{ config.SOCIAL_NETWORKS_MEDIUM_URL }}" class="icon brands fa-medium-m"
-                               title="Medium"><span class="label">Medium</span></a></li>
-                    {% endif %}
-                    {% if config.SOCIAL_NETWORKS_TELEGRAM_URL != '#' %}
-                        <li><a href="{{ config.SOCIAL_NETWORKS_TELEGRAM_URL }}" class="icon brands fa-telegram"
-                               title="Telegram"><span class="label">Telegram</span></a></li>
-                    {% endif %}
-                    {% if config.SOCIAL_NETWORKS_GITHUB_URL != '#' %}
-                        <li><a href="{{ config.SOCIAL_NETWORKS_GITHUB_URL }}" class="icon brands fa-github"
-                               title="Github"><span class="label">Github</span></a></li>
-                    {% endif %}
-                    {% if config.SOCIAL_NETWORKS_GITLAB_URL != '#' %}
-                        <li><a href="{{ config.SOCIAL_NETWORKS_GITLAB_URL }}" class="icon brands fa-gitlab"
-                               title="Gitlab"><span class="label">Gitlab</span></a></li>
-                    {% endif %}
+{% extends 'base.html' %}
+{% block content %}
+    {% for last_post in last_blog %}
+        <!-- Banner -->
+        <section id="banner">
+            <div class="content">
+                <header>
+                    <h1>{{ last_post.title }}</h1>
+                </header>
+                <p>{{ last_post.content | safe | truncatewords_html:30 }}</p>
+                <ul class="actions">
+                    <li>
+                        <a href="{{ last_post.slug }}" class="button big" title="{{ last_post.title }}">
+                            Learn More
+                        </a>
+                    </li>
                 </ul>
-            </header>
-            <!-- /Header -->
-
-            {% for last_post in last_blog %}
-                <!-- Banner -->
-                <section id="banner">
-                    <div class="content">
-                        <header>
-                            <h1>{{ last_post.title }}</h1>
-                        </header>
-                        <p>{{ last_post.content | safe | truncatewords_html:30 }}</p>
-                        <ul class="actions">
-                            <li>
-                                <a href="{{ last_post.slug }}" class="button big" title="{{ last_post.title }}">
-                                    Learn More
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <span class="image object">
+            </div>
+            <span class="image object">
                         <img src="{{ last_post.thumbnail.url }}" alt="{{ last_post.title }}"/>
                     </span>
-                </section>
-                <!-- /Banner -->
+        </section>
+        <!-- /Banner -->
+    {% endfor %}
+
+    <!-- Section - Skills -->
+    <section id="skills">
+        <header class="major">
+            <h2>Skills</h2>
+        </header>
+        <div class="features">
+            {% for skill in skills %}
+                <article>
+                    <span class="icon solid {{ skill.icon }}"></span>
+                    <div class="content">
+                        <h3>{{ skill.title }}</h3>
+                        <p>{{ skill.description }}</p>
+                    </div>
+                </article>
             {% endfor %}
-
-            <!-- Section - Skills -->
-            <section id="skills">
-                <header class="major">
-                    <h2>Skills</h2>
-                </header>
-                <div class="features">
-                    {% for skill in skills %}
-                        <article>
-                            <span class="icon solid {{ skill.icon }}"></span>
-                            <div class="content">
-                                <h3>{{ skill.title }}</h3>
-                                <p>{{ skill.description }}</p>
-                            </div>
-                        </article>
-                    {% endfor %}
-                </div>
-            </section>
-            <!-- /Section -->
-
-            <!-- Section - blog -->
-            <section id="blog">
-                <header class="major">
-                    <h2>The latest Blogs</h2>
-                </header>
-                <div class="posts">
-                    {% for blog_post in blogs %}
-                        <article>
-                            <a href="{{ blog_post.slug }}" class="image" title="{{ blog_post.title }}">
-                                <img src="{{ blog_post.thumbnail.url }}" alt="{{ blog_post.title }}"/>
-                            </a>
-                            <h3>{{ blog_post.title }}</h3>
-                            <p>{{ blog_post.content | safe | truncatewords_html:30 }}</p>
-                            <ul class="actions">
-                                <li>
-                                    <a href="{{ blog_post.slug }}" class="button" title="{{ blog_post.title }}">More</a>
-                                </li>
-                            </ul>
-                        </article>
-                    {% endfor %}
-                </div>
-            </section>
-            <!-- /Section - blog -->
-
-            <!-- Section - Videocast -->
-            <section id="videocast">
-                <header class="major">
-                    <h2>The latest Videocasts</h2>
-                </header>
-                <div class="posts">
-                    {% for videocast in videocasts %}
-                        <article>
-                            <a href="{{ videocast.slug }}" class="image" title="{{ videocast.title }}">
-                                <img src="{{ videocast.thumbnail.url }}" alt="{{ videocast.title }}"/>
-                            </a>
-                            <h3>{{ videocast.title }}</h3>
-                            <p>{{ videocast.content | safe | truncatewords_html:30 }}</p>
-                            <ul class="actions">
-                                <li>
-                                    <a href="{{ videocast.slug }}" class="button" title="{{ videocast.title }}">More</a>
-                                </li>
-                            </ul>
-                        </article>
-                    {% endfor %}
-                </div>
-            </section>
-            <!-- /Section - Videocast -->
-
         </div>
-    </div>
+    </section>
+    <!-- /Section -->
 
-    <!-- Sidebar -->
-    <div id="sidebar">
-        <div class="inner">
-
-            <!-- Search -->
-            <section id="search" class="alt">
-                <form method="post" action="#">
-                    <input type="text" name="query" id="query" placeholder="Search"/>
-                </form>
-            </section>
-            <!-- /Search -->
-
-            <!-- Menu -->
-            <nav id="menu">
-                <header class="major">
-                    <h2>Menu</h2>
-                </header>
-                <ul>
-                    <li><a href="{% url 'index' %}">Homepage</a></li>
-                    <li><a href="elements.html">Blog</a></li>
-                    <li>
-                        <span class="opener">Blog Categories</span>
-                        <ul>
-                            {% for blogs_category in blogs_categories %}
-                                <li><a href="#">{{ blogs_category.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    <li><a href="elements.html">Videocast</a></li>
-                    <li>
-                        <span class="opener">Videocast Categories</span>
-                        <ul>
-                            {% for videocasts_category in videocasts_categories %}
-                                <li><a href="#">{{ videocasts_category.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    <li><a href="elements.html">Podcast</a></li>
-                    <li>
-                        <span class="opener">Podcast Categories</span>
-                        <ul>
-                            {% for podcast_category in podcast_categories %}
-                                <li><a href="#">{{ podcast_category.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <!-- /Menu -->
-
-            <!-- Section - podcast -->
-            <section id="podcast">
-                <header class="major">
-                    <h2>The latest Podcasts</h2>
-                </header>
-                <div class="mini-posts">
-                    {% for podcast in podcasts %}
-                        <article>
-                            <a href="{{ podcast.slug }}" class="image">
-                                <img src="{{ podcast.thumbnail.url }}" alt="{{ podcast.title }}"/>
-                            </a>
-                            <p>{{ podcast.content | safe |truncatewords_html:15 }}</p>
-                            <a href="{{ podcast.slug }}" class="button">More</a>
-                        </article>
-                    {% endfor %}
-                </div>
-            </section>
-            <!-- /Section - podcast -->
-
-            {% if config.GET_IN_TOUCH_ACTIVE == 'yes' %}
-                <!-- get_in_touch -->
-                <section id="get_in_touch">
-                    <header class="major">
-                        <h2>Get in touch</h2>
-                    </header>
-                    <p>{{ config.GET_IN_TOUCH_INFO | safe }}</p>
-                    <ul class="contact">
-                        <li class="icon solid fa-envelope">
-                            <a href="mailto:{{ config.GET_IN_TOUCH_EMAIL_ADDRESS }}">{{ config.GET_IN_TOUCH_EMAIL_ADDRESS }}</a>
-                        </li>
-                        <li class="icon solid fa-phone">
-                            {{ config.GET_IN_TOUCH_PHONE }}
-                        </li>
-                        <li class="icon solid fa-home">
-                            {{ config.GET_IN_TOUCH_ADDRESS | safe }}
+    <!-- Section - blog -->
+    <section id="blog">
+        <header class="major">
+            <h2>The latest Blogs</h2>
+        </header>
+        <div class="posts">
+            {% for blog_post in blogs %}
+                <article>
+                    <a href="{{ blog_post.slug }}" class="image" title="{{ blog_post.title }}">
+                        <img src="{{ blog_post.thumbnail.url }}" alt="{{ blog_post.title }}"/>
+                    </a>
+                    <h3>{{ blog_post.title }}</h3>
+                    <p>{{ blog_post.content | safe | truncatewords_html:30 }}</p>
+                    <ul class="actions">
+                        <li>
+                            <a href="{{ blog_post.slug }}" class="button" title="{{ blog_post.title }}">More</a>
                         </li>
                     </ul>
-                </section>
-                <!-- /get_in_touch -->
-            {% endif %}
-
-            <!-- Footer -->
-            <footer id="footer">
-                <p class="copyright">
-                    &copy; Untitled. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>. CMS: <a
-                        href="https://github.com/mavenium/PyEditorial" title="PyEditorial">PyEditorial</a></p>
-            </footer>
-            <!-- /Footer -->
-
+                </article>
+            {% endfor %}
         </div>
-    </div>
+    </section>
+    <!-- /Section - blog -->
 
-</div>
-
-<!-- Scripts -->
-<script src="{% static '/assets/js/jquery.min.js' %}"></script>
-<script src="{% static '/assets/js/browser.min.js' %}"></script>
-<script src="{% static '/assets/js/breakpoints.min.js' %}"></script>
-<script src="{% static '/assets/js/util.js' %}"></script>
-<script src="{% static '/assets/js/main.js' %}"></script>
-<!-- /Scripts -->
-
-</body>
-</html>
+    <!-- Section - Videocast -->
+    <section id="videocast">
+        <header class="major">
+            <h2>The latest Videocasts</h2>
+        </header>
+        <div class="posts">
+            {% for videocast in videocasts %}
+                <article>
+                    <a href="{{ videocast.slug }}" class="image" title="{{ videocast.title }}">
+                        <img src="{{ videocast.thumbnail.url }}" alt="{{ videocast.title }}"/>
+                    </a>
+                    <h3>{{ videocast.title }}</h3>
+                    <p>{{ videocast.content | safe | truncatewords_html:30 }}</p>
+                    <ul class="actions">
+                        <li>
+                            <a href="{{ videocast.slug }}" class="button" title="{{ videocast.title }}">More</a>
+                        </li>
+                    </ul>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- /Section - Videocast -->
+{% endblock %}
