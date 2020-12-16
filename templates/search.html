@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section id="archive">
+        <header class="major">
+            <h2>Search Result</h2>
+        </header>
+        <div>
+            {% for blog in blogs %}
+                <article>
+                    <a href="{% url 'content:blog_single' blog.slug %}" title="{{ blog.title }}">
+                        <h3>{{ blog.title }}</h3>
+                    </a>                    
+                    <p>{{ blog.content | safe | truncatewords_html:10 }}</p>
+                </article>
+                <hr>
+            {% endfor %}
+            
+            {% for videocast in videocasts %}
+                <article>
+                    <a href="{% url 'content:videocast_single' videocast.slug %}" title="{{ videocast.title }}">
+                        <h3>{{ videocast.title }}</h3>
+                    </a>                    
+                    <p>{{ videocast.content | safe | truncatewords_html:10 }}</p>
+                </article>
+                <hr>
+            {% endfor %}
+
+            {% for podcast in podcasts %}
+                <article>
+                    <a href="{% url 'content:podcast_single' podcast.slug %}" title="{{ podcast.title }}">
+                        <h3>{{ podcast.title }}</h3>
+                    </a>                    
+                    <p>{{ podcast.content | safe | truncatewords_html:10 }}</p>
+                </article>
+                <hr>
+            {% endfor %}                        
+        </div>
+    </section>
+{% endblock %}
