@@ -141,7 +141,7 @@ CKEDITOR_CONFIGS = {
 }
 
 # CONSTANCE Settings
-CONSTANCE_BACKEND = 'constance.backends.memory.MemoryBackend'
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
 CONSTANCE_IGNORE_ADMIN_VERSION_CHECK = True
 
