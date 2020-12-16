@@ -134,6 +134,12 @@ MEDIA_URL = '/media/'
 # CKEditor
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}
+
 # CONSTANCE Settings
 CONSTANCE_BACKEND = 'constance.backends.memory.MemoryBackend'
 
