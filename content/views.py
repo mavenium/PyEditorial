@@ -1,8 +1,12 @@
 from django.views import generic
 
+from django.db.models import Q
+
 from content import models as ContentModels
 
 from constance import config
+
+from .forms import SearchForm
 
 
 class Base(generic.ListView):
@@ -30,6 +34,20 @@ class Index(Base):
         context['skills'] = ContentModels.Skill.objects.all()
         context['blogs'] = ContentModels.Blog.objects.order_by('-pk').filter(publish=True)[1:5]
         context['videocasts'] = ContentModels.Videocast.objects.order_by('-pk').filter(publish=True)[:4]
+        return context
+
+
+class Search(Base):
+    template_name = 'search.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        form = SearchForm(self.request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            context['blogs'] = ContentModels.Blog.objects.order_by('-pk').filter(Q(title__icontains=query) | Q(content__icontains=query))
+            context['videocasts'] = ContentModels.Videocast.objects.order_by('-pk').filter(Q(title__icontains=query) | Q(content__icontains=query))
+            context['podcasts'] = ContentModels.Podcast.objects.order_by('-pk').filter(Q(title__icontains=query) | Q(content__icontains=query))
         return context
 
 
