@@ -180,8 +180,6 @@ CONSTANCE_CONFIG = {
     'SOCIAL_NETWORKS_TELEGRAM_URL': ('#', 'Social Networks - Telegram', str),
     'SOCIAL_NETWORKS_GITHUB_URL': ('#', 'Social Networks - Github', str),
     'SOCIAL_NETWORKS_GITLAB_URL': ('#', 'Social Networks - Gitlab', str),
-
-    # 'GET_IN_TOUCH_PASHM': (True, '"Get in touch" pashm', bool),
 }
 
 CONSTANCE_CONFIG_FIELDSETS = {
