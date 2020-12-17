@@ -43,14 +43,10 @@ class Search(View):
         return render(request, self.template_name, context)
 
 
-class Blog(View):
+class Blog(generic.ListView):
+    model = models.Blog
     template_name = 'archive.html'
-
-    def get(self, request, *args, **kwargs):
-        context = {
-            'archives': models.Blog.objects.all(),
-        }
-        return render(request, self.template_name, context)
+    context_object_name = 'archives'
 
 
 class BlogArchiveByCategoryPK(View):
