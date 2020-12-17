@@ -1,132 +1,133 @@
-from django.views import generic
-
+from django.shortcuts import render, redirect
+from django.views import generic, View
 from django.db.models import Q
 
-from content import models as ContentModels
-
-from constance import config
-
+from . import models
 from .forms import SearchForm
 
 
-class Base(generic.ListView):
-    template_name = 'base.html'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['blogs_categories'] = ContentModels.BlogCategory.objects.all()
-        context['videocasts_categories'] = ContentModels.VideocastCategory.objects.all()
-        context['podcast_categories'] = ContentModels.PodcastCategory.objects.all()
-        context['podcasts'] = ContentModels.Podcast.objects.order_by('-pk').filter(publish=True)[:2]
-        context['config'] = config
-        return context
-
-    def get_queryset(self):
-        pass
-
-
-class Index(Base):
+class Index(View):
     template_name = 'index.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['last_blog'] = ContentModels.Blog.objects.order_by('-pk').filter(publish=True)[:1]
-        context['skills'] = ContentModels.Skill.objects.all()
-        context['blogs'] = ContentModels.Blog.objects.order_by('-pk').filter(publish=True)[1:5]
-        context['videocasts'] = ContentModels.Videocast.objects.order_by('-pk').filter(publish=True)[:4]
-        return context
+    def get(self, request, *args, **kwargs):
+        context = {
+            'last_blog': models.Blog.objects.order_by('-pk').filter(publish=True)[:1],
+            'skills': models.Skill.objects.all(),
+            'blogs': models.Blog.objects.order_by('-pk').filter(publish=True)[1:5],
+            'video_casts': models.VideoCast.objects.order_by('-pk').filter(publish=True)[:4]
+        }
+        return render(request, self.template_name, context)
 
 
-class Search(Base):
+class Search(View):
     template_name = 'search.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get(self, request, *args, **kwargs):
         form = SearchForm(self.request.GET)
         if form.is_valid():
+            print('valid')
             query = form.cleaned_data['query']
-            context['blogs'] = ContentModels.Blog.objects.order_by('-pk').filter(Q(title__icontains=query) | Q(content__icontains=query))
-            context['videocasts'] = ContentModels.Videocast.objects.order_by('-pk').filter(Q(title__icontains=query) | Q(content__icontains=query))
-            context['podcasts'] = ContentModels.Podcast.objects.order_by('-pk').filter(Q(title__icontains=query) | Q(content__icontains=query))
-        return context
+            context = {
+                'blogs': models.Blog.objects.order_by('-pk').filter(
+                    Q(title__icontains=query) | Q(content__icontains=query)
+                ),
+                'videocasts': models.VideoCast.objects.order_by('-pk').filter(
+                    Q(title__icontains=query) | Q(content__icontains=query)
+                ),
+                'podcasts': models.Podcast.objects.order_by('-pk').filter(
+                    Q(title__icontains=query) | Q(content__icontains=query)
+                )
+            }
+        else:
+            return redirect('content:index')
+        return render(request, self.template_name, context)
 
 
-class Blog(Base):
+class Blog(View):
     template_name = 'archive.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['archives'] = ContentModels.Blog.objects.all()
-        return context
+    def get(self, request, *args, **kwargs):
+        context = {
+            'archives': models.Blog.objects.all(),
+        }
+        return render(request, self.template_name, context)
 
 
-class BlogArchiveByCategoryPK(Base):
+class BlogArchiveByCategoryPK(View):
     template_name = 'archive.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['archives'] = ContentModels.Blog.objects.filter(category=self.kwargs['pk'])
-        return context
+    def get(self, request, *args, **kwargs):
+        context = {
+            'archives': models.Blog.objects.filter(category=self.kwargs['pk']),
+        }
+        return render(request, self.template_name, context)
 
 
-class BlogSingle(Base):
+class BlogSingle(View):
     template_name = 'single.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['single_content'] = ContentModels.Blog.objects.filter(slug=self.kwargs['slug'])
-        return context
+    def get(self, request, *args, **kwargs):
+        context = {
+            'single_content': models.Blog.objects.filter(slug=self.kwargs['slug']),
+        }
+        return render(request, self.template_name, context)
 
 
-class Videocast(Base):
+class VideoCast(View):
     template_name = 'archive.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['archives'] = ContentModels.Videocast.objects.all()
-        return context
+    def get(self, request, *args, **kwargs):
+        context = {
+            'archives': models.VideoCast.objects.all(),
+        }
+        return render(request, self.template_name, context)
 
 
-class VideocastArchiveByCategoryPK(Base):
+class VideoCastArchiveByCategoryPK(View):
     template_name = 'archive.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['archives'] = ContentModels.Videocast.objects.filter(category=self.kwargs['pk'])
-        return context
+    def get(self, request, *args, **kwargs):
+        context = {
+            'archives': models.VideoCast.objects.filter(category=self.kwargs['pk']),
+        }
+        return render(request, self.template_name, context)
 
 
-class VideocastSingle(Base):
+class VideoCastSingle(View):
     template_name = 'single.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['single_content'] = ContentModels.Videocast.objects.filter(slug=self.kwargs['slug'])
-        return context
+    def get(self, request, *args, **kwargs):
+        context = {
+            'single_content': models.VideoCast.objects.filter(slug=self.kwargs['slug']),
+        }
+        return render(request, self.template_name, context)
 
 
-class Podcast(Base):
+class Podcast(View):
     template_name = 'archive.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['archives'] = ContentModels.Podcast.objects.all()
-        return context
+    def get(self, request, *args, **kwargs):
+        context = {
+            'archives': models.Podcast.objects.all(),
+        }
+        return render(request, self.template_name, context)
 
 
-class PodArchiveByCategoryPK(Base):
+class PodArchiveByCategoryPK(View):
     template_name = 'archive.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['archives'] = ContentModels.Podcast.objects.filter(category=self.kwargs['pk'])
-        return context
+    def get(self, request, *args, **kwargs):
+        context = {
+            'archives': models.Podcast.objects.filter(category=self.kwargs['pk']),
+        }
+        return render(request, self.template_name, context)
 
 
-class PodSingle(Base):
+class PodSingle(View):
     template_name = 'single.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['single_content'] = ContentModels.Podcast.objects.filter(slug=self.kwargs['slug'])
-        return context
+    def get(self, request, *args, **kwargs):
+        context = {
+            'single_content': models.Podcast.objects.filter(slug=self.kwargs['slug']),
+        }
+        return render(request, self.template_name, context)

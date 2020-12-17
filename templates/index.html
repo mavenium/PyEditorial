@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
 {% block content %}
     {% for last_post in last_blog %}
         <!-- Banner -->
@@ -11,7 +13,7 @@
                 <ul class="actions">
                     <li>
                         <a href="{% url 'content:blog_single' last_post.slug %}" class="button big" title="{{ last_post.title }}">
-                            Learn More
+                            {% translate 'Learn More' %}
                         </a>
                     </li>
                 </ul>
@@ -26,7 +28,7 @@
     <!-- Section - Skills -->
     <section id="skills">
         <header class="major">
-            <h2>Skills</h2>
+            <h2>{% translate 'Skills' %}</h2>
         </header>
         <div class="features">
             {% for skill in skills %}
@@ -45,7 +47,7 @@
     <!-- Section - blog -->
     <section id="blog">
         <header class="major">
-            <h2>The latest Blogs</h2>
+            <h2>{% translate 'The latest Blogs' %}</h2>
         </header>
         <div class="posts">
             {% for blog_post in blogs %}
@@ -57,7 +59,7 @@
                     <p>{{ blog_post.content | safe | truncatewords_html:30 }}</p>
                     <ul class="actions">
                         <li>
-                            <a href="{% url 'content:blog_single' blog_post.slug %}" class="button" title="{{ blog_post.title }}">More</a>
+                            <a href="{% url 'content:blog_single' blog_post.slug %}" class="button" title="{{ blog_post.title }}">{% translate 'More' %}</a>
                         </li>
                     </ul>
                 </article>
@@ -66,27 +68,27 @@
     </section>
     <!-- /Section - blog -->
 
-    <!-- Section - Videocast -->
+    <!-- Section - Video Cast -->
     <section id="videocast">
         <header class="major">
-            <h2>The latest Videocasts</h2>
+            <h2>{% translate 'The latest Video Casts' %}</h2>
         </header>
         <div class="posts">
-            {% for videocast in videocasts %}
+            {% for video_cast in video_casts %}
                 <article>
-                    <a href="{% url 'content:videocast_single' videocast.slug %}" class="image" title="{{ videocast.title }}">
-                        <img src="{{ videocast.thumbnail.url }}" alt="{{ videocast.title }}"/>
+                    <a href="{% url 'content:videocast_single' video_cast.slug %}" class="image" title="{{ video_cast.title }}">
+                        <img src="{{ video_cast.thumbnail.url }}" alt="{{ video_cast.title }}"/>
                     </a>
-                    <h3>{{ videocast.title }}</h3>
-                    <p>{{ videocast.content | safe | truncatewords_html:30 }}</p>
+                    <h3>{{ video_cast.title }}</h3>
+                    <p>{{ video_cast.content | safe | truncatewords_html:30 }}</p>
                     <ul class="actions">
                         <li>
-                            <a href="{% url 'content:videocast_single' videocast.slug %}" class="button" title="{{ videocast.title }}">More</a>
+                            <a href="{% url 'content:videocast_single' video_cast.slug %}" class="button" title="{{ video_cast.title }}">{% translate 'More' %}</a>
                         </li>
                     </ul>
                 </article>
             {% endfor %}
         </div>
     </section>
-    <!-- /Section - Videocast -->
+    <!-- /Section - Video Cast -->
 {% endblock %}
