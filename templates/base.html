@@ -71,8 +71,8 @@
 
             <!-- Search -->
             <section id="search" class="alt">
-                <form method="GET" action="/search/">
-                    <input type="text" name="query" id="query" placeholder="Search"/>
+                <form method="GET" action="{% url 'content:search' %}">
+                    <input type="text" name="query" id="query" placeholder="Search" required>
                 </form>
             </section>
             <!-- /Search -->
