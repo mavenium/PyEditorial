@@ -94,12 +94,12 @@
                             {% endfor %}
                         </ul>
                     </li>
-                    <li><a href="{% url 'content:videocast' %}">{% translate 'Video Cast' %}</a></li>
+                    <li><a href="{% url 'content:video_cast' %}">{% translate 'Video Cast' %}</a></li>
                     <li>
                         <span class="opener">{% translate 'Video Cast Categories' %}</span>
                         <ul>
                             {% for video_cast_category in video_cast_categories %}
-                                <li><a href="{% url 'content:videocast_archive_by_category_pk' video_cast_category.pk %}">{{ video_cast_category.title }}</a></li>
+                                <li><a href="{% url 'content:video_cast_archive_by_category_pk' video_cast_category.pk %}">{{ video_cast_category.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>

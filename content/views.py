@@ -45,85 +45,62 @@ class Search(View):
 
 class Blog(generic.ListView):
     model = models.Blog
-    template_name = 'archive.html'
-    context_object_name = 'archives'
+    template_name = 'blog_archive.html'
 
 
-class BlogArchiveByCategoryPK(View):
-    template_name = 'archive.html'
+class BlogArchiveByCategoryPK(generic.ListView):
+    model = models.Blog
+    template_name = 'blog_archive.html'
 
-    def get(self, request, *args, **kwargs):
-        context = {
-            'archives': models.Blog.objects.filter(category=self.kwargs['pk']),
-        }
-        return render(request, self.template_name, context)
+    def get_queryset(self):
+        return self.model.objects.filter(category=self.kwargs['pk'])
 
 
-class BlogSingle(View):
+class BlogSingle(generic.DetailView):
+    model = models.Blog
     template_name = 'single.html'
 
-    def get(self, request, *args, **kwargs):
-        context = {
-            'single_content': models.Blog.objects.filter(slug=self.kwargs['slug']),
-        }
-        return render(request, self.template_name, context)
+    def get_queryset(self):
+        return self.model.objects.filter(slug=self.kwargs['slug'])
 
 
-class VideoCast(View):
-    template_name = 'archive.html'
-
-    def get(self, request, *args, **kwargs):
-        context = {
-            'archives': models.VideoCast.objects.all(),
-        }
-        return render(request, self.template_name, context)
+class VideoCast(generic.ListView):
+    model = models.VideoCast
+    template_name = 'video_cast_archive.html'
 
 
-class VideoCastArchiveByCategoryPK(View):
-    template_name = 'archive.html'
+class VideoCastArchiveByCategoryPK(generic.ListView):
+    model = models.VideoCast
+    template_name = 'video_cast_archive.html'
 
-    def get(self, request, *args, **kwargs):
-        context = {
-            'archives': models.VideoCast.objects.filter(category=self.kwargs['pk']),
-        }
-        return render(request, self.template_name, context)
+    def get_queryset(self):
+        return self.model.objects.filter(category=self.kwargs['pk'])
 
 
-class VideoCastSingle(View):
+class VideoCastSingle(generic.DetailView):
+    model = models.VideoCast
     template_name = 'single.html'
 
-    def get(self, request, *args, **kwargs):
-        context = {
-            'single_content': models.VideoCast.objects.filter(slug=self.kwargs['slug']),
-        }
-        return render(request, self.template_name, context)
+    def get_queryset(self):
+        return self.model.objects.filter(slug=self.kwargs['slug'])
 
 
-class Podcast(View):
-    template_name = 'archive.html'
-
-    def get(self, request, *args, **kwargs):
-        context = {
-            'archives': models.Podcast.objects.all(),
-        }
-        return render(request, self.template_name, context)
+class Podcast(generic.ListView):
+    model = models.Podcast
+    template_name = 'podcast_archive.html'
 
 
-class PodArchiveByCategoryPK(View):
-    template_name = 'archive.html'
+class PodArchiveByCategoryPK(generic.ListView):
+    model = models.Podcast
+    template_name = 'podcast_archive.html'
 
-    def get(self, request, *args, **kwargs):
-        context = {
-            'archives': models.Podcast.objects.filter(category=self.kwargs['pk']),
-        }
-        return render(request, self.template_name, context)
+    def get_queryset(self):
+        return self.model.objects.filter(category=self.kwargs['pk'])
 
 
-class PodSingle(View):
+class PodSingle(generic.DetailView):
+    model = models.Podcast
     template_name = 'single.html'
 
-    def get(self, request, *args, **kwargs):
-        context = {
-            'single_content': models.Podcast.objects.filter(slug=self.kwargs['slug']),
-        }
-        return render(request, self.template_name, context)
+    def get_queryset(self):
+        return self.model.objects.filter(slug=self.kwargs['slug'])
