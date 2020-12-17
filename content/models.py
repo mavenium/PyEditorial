@@ -61,7 +61,7 @@ class Blog(models.Model):
         return self.title
 
 
-class VideocastCategory(models.Model):
+class VideoCastCategory(models.Model):
     title = models.CharField(
         max_length=256,
         verbose_name=_('Title :'),
@@ -71,14 +71,14 @@ class VideocastCategory(models.Model):
     )
 
     class Meta:
-        verbose_name = _('Videocast Category')
-        verbose_name_plural = _('Videocast Categories')
+        verbose_name = _('Video Cast Category')
+        verbose_name_plural = _('Video Cast Categories')
 
     def __str__(self):
         return self.title
 
 
-class Videocast(models.Model):
+class VideoCast(models.Model):
     title = models.CharField(
         max_length=256,
         verbose_name=_('Title :'),
@@ -107,13 +107,13 @@ class Videocast(models.Model):
         verbose_name=_('Video link :')
     )
     category = models.ManyToManyField(
-        VideocastCategory
+        VideoCastCategory
     )
     content = RichTextUploadingField()
 
     class Meta:
-        verbose_name = _('Videocast')
-        verbose_name_plural = _('Videocasts')
+        verbose_name = _('Video Cast')
+        verbose_name_plural = _('Video Casts')
 
     def display_category(self):
         return ', '.join([cat.title for cat in self.category.all()])
