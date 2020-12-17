@@ -10,16 +10,16 @@
             </h2>
         </header>
         <div class="posts">
-            {% for archive in archives %}
+            {% for object in object_list %}
                 <article>
-                    <a href="{% url 'content:blog_single' archive.slug %}" class="image" title="{{ archive.title }}">
-                        <img src="{{ archive.thumbnail.url }}" alt="{{ archive.title }}"/>
+                    <a href="{% url 'content:blog_single' object.slug %}" class="image" title="{{ object.title }}">
+                        <img src="{{ object.thumbnail.url }}" alt="{{ object.title }}"/>
                     </a>
-                    <h3>{{ archive.title }}</h3>
-                    <p>{{ archive.content | safe | truncatewords_html:30 }}</p>
+                    <h3>{{ object.title }}</h3>
+                    <p>{{ object.content | safe | truncatewords_html:30 }}</p>
                     <ul class="actions">
                         <li>
-                            <a href="{% url 'content:blog_single' archive.slug %}" class="button" title="{{ archive.title }}">
+                            <a href="{% url 'content:blog_single' object.slug %}" class="button" title="{{ object.title }}">
                                 {% translate 'More' %}
                             </a>
                         </li>
