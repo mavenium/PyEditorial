@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -109,6 +110,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
+LANGUAGES = [
+    ('en', _('English')),
+]
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -157,30 +162,33 @@ CONSTANCE_DATABASE_CACHE_BACKEND = 'default'
 CONSTANCE_ADDITIONAL_FIELDS = {
     'yes_no_select': ['django.forms.fields.ChoiceField', {
         'widget': 'django.forms.Select',
-        'choices': (("yes", "Yes"), ("no", "No"))
+        'choices': (
+            ("yes", _('Yes')),
+            ("no", _('No'))
+        )
     }],
     'image_field': ['django.forms.ImageField', {}]
 }
 
 CONSTANCE_CONFIG = {
-    'SITE_TITLE': ('My Blog', 'Title of this site!', str),
-    'SITE_DESCRIPTION': ('Blog Description', 'Description of this site!', str),
-    'SITE_FAVICON': ('default_favicon.png', 'Favicon of this site!', 'image_field'),
+    'SITE_TITLE': ('My Blog', _('Title of this site!'), str),
+    'SITE_DESCRIPTION': ('Blog Description', _('Description of this site!'), str),
+    'SITE_FAVICON': ('default_favicon.png', _('Favicon of this site!'), 'image_field'),
 
-    'GET_IN_TOUCH_ACTIVE': ('yes', '"Get in touch" section is active?', 'yes_no_select'),
-    'GET_IN_TOUCH_INFO': ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', '"Get in touch" information text', str),
-    'GET_IN_TOUCH_EMAIL_ADDRESS': ('information@untitled.tld', '"Get in touch" email address', str),
-    'GET_IN_TOUCH_PHONE': ('(000) 000-0000', '"Get in touch" phone number', str),
-    'GET_IN_TOUCH_ADDRESS': ('1234 Somewhere Road #8254<br />Nashville, TN 00000-0000', '"Get in touch" address', str),
+    'GET_IN_TOUCH_ACTIVE': ('yes', _('"Get in touch" section is active?'), 'yes_no_select'),
+    'GET_IN_TOUCH_INFO': ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', _('"Get in touch" information text'), str),
+    'GET_IN_TOUCH_EMAIL_ADDRESS': ('information@untitled.tld', _('"Get in touch" email address'), str),
+    'GET_IN_TOUCH_PHONE': ('(000) 000-0000', _('"Get in touch" phone number'), str),
+    'GET_IN_TOUCH_ADDRESS': ('1234 Somewhere Road #8254<br />Nashville, TN 00000-0000', _('"Get in touch" address'), str),
 
-    'SOCIAL_NETWORKS_FACEBOOK_URL': ('#', 'Social Networks - Facebook', str),
-    'SOCIAL_NETWORKS_TWITTER_URL': ('#', 'Social Networks - Twitter', str),
-    'SOCIAL_NETWORKS_SNAPCHAT_URL': ('#', 'Social Networks - Snapchat', str),
-    'SOCIAL_NETWORKS_INSTAGRAM_URL': ('#', 'Social Networks - Instagram', str),
-    'SOCIAL_NETWORKS_MEDIUM_URL': ('#', 'Social Networks - Medium', str),
-    'SOCIAL_NETWORKS_TELEGRAM_URL': ('#', 'Social Networks - Telegram', str),
-    'SOCIAL_NETWORKS_GITHUB_URL': ('#', 'Social Networks - Github', str),
-    'SOCIAL_NETWORKS_GITLAB_URL': ('#', 'Social Networks - Gitlab', str),
+    'SOCIAL_NETWORKS_FACEBOOK_URL': ('#', _('Social Networks - Facebook'), str),
+    'SOCIAL_NETWORKS_TWITTER_URL': ('#', _('Social Networks - Twitter'), str),
+    'SOCIAL_NETWORKS_SNAPCHAT_URL': ('#', _('Social Networks - Snapchat'), str),
+    'SOCIAL_NETWORKS_INSTAGRAM_URL': ('#', _('Social Networks - Instagram'), str),
+    'SOCIAL_NETWORKS_MEDIUM_URL': ('#', _('Social Networks - Medium'), str),
+    'SOCIAL_NETWORKS_TELEGRAM_URL': ('#', _('Social Networks - Telegram'), str),
+    'SOCIAL_NETWORKS_GITHUB_URL': ('#', _('Social Networks - Github'), str),
+    'SOCIAL_NETWORKS_GITLAB_URL': ('#', _('Social Networks - Gitlab'), str),
 }
 
 CONSTANCE_CONFIG_FIELDSETS = {
