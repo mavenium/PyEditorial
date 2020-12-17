@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 {% get_media_prefix as MEDIA_URL %}
 <!DOCTYPE html>
 <html lang="en">
@@ -25,35 +26,35 @@
                 <ul class="icons">
                     {% if config.SOCIAL_NETWORKS_TWITTER_URL != '#' %}
                         <li><a href="{{ config.SOCIAL_NETWORKS_TWITTER_URL }}" class="icon brands fa-twitter"
-                               title="Twitter"><span class="label">Twitter</span></a></li>
+                               title="Twitter"><span class="label">{% translate 'Twitter' %}</span></a></li>
                     {% endif %}
                     {% if config.SOCIAL_NETWORKS_FACEBOOK_URL != '#' %}
                         <li><a href="{{ config.SOCIAL_NETWORKS_FACEBOOK_URL }}" class="icon brands fa-facebook-f"
-                               title="Facebook"><span class="label">Facebook</span></a></li>
+                               title="Facebook"><span class="label">{% translate 'Facebook' %}</span></a></li>
                     {% endif %}
                     {% if config.SOCIAL_NETWORKS_SNAPCHAT_URL != '#' %}
                         <li><a href="{{ config.SOCIAL_NETWORKS_SNAPCHAT_URL }}" class="icon brands fa-snapchat-ghost"
-                               title="Snapchat"><span class="label">Snapchat</span></a></li>
+                               title="Snapchat"><span class="label">{% translate 'Snapchat' %}</span></a></li>
                     {% endif %}
                     {% if config.SOCIAL_NETWORKS_INSTAGRAM_URL != '#' %}
                         <li><a href="{{ config.SOCIAL_NETWORKS_INSTAGRAM_URL }}" class="icon brands fa-instagram"
-                               title="Instagram"><span class="label">Instagram</span></a></li>
+                               title="Instagram"><span class="label">{% translate 'Instagram' %}</span></a></li>
                     {% endif %}
                     {% if config.SOCIAL_NETWORKS_MEDIUM_URL != '#' %}
                         <li><a href="{{ config.SOCIAL_NETWORKS_MEDIUM_URL }}" class="icon brands fa-medium-m"
-                               title="Medium"><span class="label">Medium</span></a></li>
+                               title="Medium"><span class="label">{% translate 'Medium' %}</span></a></li>
                     {% endif %}
                     {% if config.SOCIAL_NETWORKS_TELEGRAM_URL != '#' %}
                         <li><a href="{{ config.SOCIAL_NETWORKS_TELEGRAM_URL }}" class="icon brands fa-telegram"
-                               title="Telegram"><span class="label">Telegram</span></a></li>
+                               title="Telegram"><span class="label">{% translate 'Telegram' %}</span></a></li>
                     {% endif %}
                     {% if config.SOCIAL_NETWORKS_GITHUB_URL != '#' %}
                         <li><a href="{{ config.SOCIAL_NETWORKS_GITHUB_URL }}" class="icon brands fa-github"
-                               title="Github"><span class="label">Github</span></a></li>
+                               title="Github"><span class="label">{% translate 'Github' %}</span></a></li>
                     {% endif %}
                     {% if config.SOCIAL_NETWORKS_GITLAB_URL != '#' %}
                         <li><a href="{{ config.SOCIAL_NETWORKS_GITLAB_URL }}" class="icon brands fa-gitlab"
-                               title="Gitlab"><span class="label">Gitlab</span></a></li>
+                               title="Gitlab"><span class="label">{% translate 'Gitlab' %}</span></a></li>
                     {% endif %}
                 </ul>
             </header>
@@ -72,7 +73,7 @@
             <!-- Search -->
             <section id="search" class="alt">
                 <form method="GET" action="{% url 'content:search' %}">
-                    <input type="text" name="query" id="query" placeholder="Search" required>
+                    <input type="text" name="query" id="query" placeholder="{% translate 'Search' %}" required>
                 </form>
             </section>
             <!-- /Search -->
@@ -83,28 +84,28 @@
                     <h2>Menu</h2>
                 </header>
                 <ul>
-                    <li><a href="{% url 'content:index' %}">Homepage</a></li>
-                    <li><a href="{% url 'content:blog' %}">Blog</a></li>
+                    <li><a href="{% url 'content:index' %}">{% translate 'Home Page' %}</a></li>
+                    <li><a href="{% url 'content:blog' %}">{% translate 'Blog' %}</a></li>
                     <li>
-                        <span class="opener">Blog Categories</span>
+                        <span class="opener">{% translate 'Blog Categories' %}</span>
                         <ul>
-                            {% for blogs_category in blogs_categories %}
-                                <li><a href="{% url 'content:blog_archive_by_category_pk' blogs_category.pk %}">{{ blogs_category.title }}</a></li>
+                            {% for blog_category in blog_categories %}
+                                <li><a href="{% url 'content:blog_archive_by_category_pk' blog_category.pk %}">{{ blog_category.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
-                    <li><a href="{% url 'content:videocast' %}">Videocast</a></li>
+                    <li><a href="{% url 'content:videocast' %}">{% translate 'Video Cast' %}</a></li>
                     <li>
-                        <span class="opener">Videocast Categories</span>
+                        <span class="opener">{% translate 'Video Cast Categories' %}</span>
                         <ul>
-                            {% for videocasts_category in videocasts_categories %}
-                                <li><a href="{% url 'content:videocast_archive_by_category_pk' videocasts_category.pk %}">{{ videocasts_category.title }}</a></li>
+                            {% for video_cast_category in video_cast_categories %}
+                                <li><a href="{% url 'content:videocast_archive_by_category_pk' video_cast_category.pk %}">{{ video_cast_category.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
-                    <li><a href="{% url 'content:podcast' %}">Podcast</a></li>
+                    <li><a href="{% url 'content:podcast' %}">{% translate 'Podcast' %}</a></li>
                     <li>
-                        <span class="opener">Podcast Categories</span>
+                        <span class="opener">{% translate 'Podcast Categories' %}</span>
                         <ul>
                             {% for podcast_category in podcast_categories %}
                                 <li><a href="{% url 'content:podcast_archive_by_category_pk' podcast_category.pk %}">{{ podcast_category.title }}</a></li>
@@ -118,7 +119,7 @@
             <!-- Section - podcast -->
             <section id="podcast">
                 <header class="major">
-                    <h2>The latest Podcasts</h2>
+                    <h2>{% translate 'The latest Podcasts' %}</h2>
                 </header>
                 <div class="mini-posts">
                     {% for podcast in podcasts %}
@@ -127,7 +128,7 @@
                                 <img src="{{ podcast.thumbnail.url }}" alt="{{ podcast.title }}"/>
                             </a>
                             <p>{{ podcast.content | safe |truncatewords_html:15 }}</p>
-                            <a href="{% url 'content:podcast_single' podcast.slug %}" class="button">More</a>
+                            <a href="{% url 'content:podcast_single' podcast.slug %}" class="button">{% translate 'More' %}</a>
                         </article>
                     {% endfor %}
                 </div>
@@ -138,7 +139,7 @@
                 <!-- get_in_touch -->
                 <section id="get_in_touch">
                     <header class="major">
-                        <h2>Get in touch</h2>
+                        <h2>{% translate 'Get in touch' %}</h2>
                     </header>
                     <p>{{ config.GET_IN_TOUCH_INFO | safe }}</p>
                     <ul class="contact">
