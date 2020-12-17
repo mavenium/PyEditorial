@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <!-- Section - archive -->
+    <section id="archive">
+        <header class="major">
+            <h2>
+                {% translate 'Video Cast Archive' %}
+            </h2>
+        </header>
+        <div class="posts">
+            {% for object in object_list %}
+                <article>
+                    <a href="{% url 'content:videocast_single' object.slug %}" class="image" title="{{ object.title }}">
+                        <img src="{{ object.thumbnail.url }}" alt="{{ object.title }}"/>
+                    </a>
+                    <h3>{{ object.title }}</h3>
+                    <p>{{ object.content | safe | truncatewords_html:30 }}</p>
+                    <ul class="actions">
+                        <li>
+                            <a href="{% url 'content:videocast_single' object.slug %}" class="button" title="{{ object.title }}">
+                                {% translate 'More' %}
+                            </a>
+                        </li>
+                    </ul>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- /Section - archive -->
+{% endblock %}
