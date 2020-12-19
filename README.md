@@ -21,6 +21,13 @@ A free, open-source Blog CMS based on the "Django" and "Editorial" HTML5 theme.
 - Translation ready
 
 ------------
+### Special Thanks
+
+| Python | Django | Pycharm |
+| ------------- | ------------- | ------------- |
+| [![](https://s17.picofile.com/file/8418101118/python.png)](https://www.python.org "Python")  | [![](https://s17.picofile.com/file/8418100976/django.png)](https://www.djangoproject.com "Django")  | [![](https://s17.picofile.com/file/8418101034/pycharm.png)](https://www.jetbrains.com/pycharm/ "Pycharm")  |
+
+------------
 ### Screenshots
 
 ![](https://raw.githubusercontent.com/mavenium/PyEditorial/master/Screenshots/Index.png)
