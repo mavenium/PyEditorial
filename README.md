@@ -89,6 +89,6 @@ python manage.py runserver		                        # Run the project
 
 - [ ] Create useful tests
 - [x] Create search section
-- [ ] Create user Login/Logout forms in front-end
+- [x] Create user Login/Logout forms in front-end
 - [ ] Create dynamic forms to add contents in front-end
 - [ ] Create REST-API
