@@ -8,7 +8,7 @@ A free, open-source Blog CMS based on the "Django" and "Editorial" HTML5 theme.
 
 - Has a "Blog" section to create and edit a blog + Blog Category
 - Has a "Video Cast" section to create and edit a video cast + Video cast Category
-- Has a "Podcast" section to create and edit a podcast + Podcast Category
+- Has a "Podcast" section to create and edit a podcast + podcast Category
 - Has a "Skill" section to create and edit a skill
 - Has a "CONSTANCE" Section to manage dynamic Django settings (Blog title, Social Networks links and ...)
 - Displays the list of Blog posts as paged in archive
@@ -19,6 +19,7 @@ A free, open-source Blog CMS based on the "Django" and "Editorial" HTML5 theme.
 - Used "Sqlite" to create DB
 - Used "CKEditor"
 - Translation ready
+- Auth system
 
 ------------
 ### Special Thanks
