@@ -112,6 +112,9 @@
                             {% endfor %}
                         </ul>
                     </li>
+                    {% if user.is_anonymous %}
+                    <li><a href="{% url 'login' %}">{% translate 'Login' %}</a></li>
+                    {% endif %}
                 </ul>
             </nav>
             <!-- /Menu -->
