@@ -19,7 +19,7 @@ A free, open-source Blog CMS based on the "Django" and "Editorial" HTML5 theme.
 - Used "Sqlite" to create DB
 - Used "CKEditor"
 - Translation ready
-- Auth system (Login & Logout & Forget password)
+- Auth system (Login & Logout and Forget password)
 
 ------------
 ### Special Thanks
