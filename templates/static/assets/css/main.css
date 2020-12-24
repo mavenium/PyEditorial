@@ -2271,3 +2271,7 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
+#login_form input[name="username"], #login_form input[name="password"] {
+    margin-bottom: 20px;
+}
