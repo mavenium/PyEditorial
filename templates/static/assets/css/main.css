@@ -2274,6 +2274,7 @@ button,
 
 #auth_form input[name="username"],
 #auth_form input[name="password"],
+#auth_form input[name="new_password2"],
 #auth_form input[name="email"] {
     margin-bottom: 20px;
 }
