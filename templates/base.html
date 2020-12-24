@@ -114,7 +114,6 @@
                     </li>
                     {% if user.is_anonymous %}
                     <li><a href="{% url 'login' %}">{% translate 'Login' %}</a></li>
-                    <li><a href="{% url 'password_reset' %}">{% translate 'Forget Password' %}</a></li>
                     {% endif %}
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}">{% translate 'Logout' %}</a></li>
