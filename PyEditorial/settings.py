@@ -216,3 +216,8 @@ CONSTANCE_CONFIG_FIELDSETS = {
     ),
 }
 # CONSTANCE Settings
+
+# Auth Settings
+LOGIN_REDIRECT_URL = 'content:index'
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'content:index'
