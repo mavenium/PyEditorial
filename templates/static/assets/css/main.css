@@ -2272,6 +2272,6 @@ button,
     margin-top: 0;
     padding-top: 0; }
 
-#login_form input[name="username"], #login_form input[name="password"] {
+#auth_form input[name="username"], #auth_form input[name="password"] {
     margin-bottom: 20px;
 }
