@@ -117,6 +117,14 @@
                     {% endif %}
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}">{% translate 'Logout' %}</a></li>
+
+                    <li>
+                        <span class="opener">{% translate 'Create New Objects' %}</span>
+                        <ul>
+                            <li><a href="{% url 'content:blog_create' %}">{% translate 'New Blog' %}</a></li>
+                        </ul>
+                    </li>
+
                     {% endif %}
                 </ul>
             </nav>
@@ -183,6 +191,9 @@
 <script src="{% static '/assets/js/util.js' %}"></script>
 <script src="{% static '/assets/js/main.js' %}"></script>
 <!-- /Scripts -->
+
+{% block custom_script %}
+{% endblock custom_script %}
 
 </body>
 </html>

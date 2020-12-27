@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.views import generic, View
 from django.db.models import Q
@@ -46,6 +48,13 @@ class Search(View):
 class Blog(generic.ListView):
     model = models.Blog
     template_name = 'blog_archive.html'
+
+
+class BlogCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    model = models.Blog
+    fields = '__all__'
+    success_message = 'Blog was created successfully'
+    success_url = '/create/blog/'
 
 
 class BlogArchiveByCategoryPK(generic.ListView):
