@@ -20,7 +20,9 @@ A free, open-source Blog CMS based on the "Django" and "Editorial" HTML5 theme.
 - Used "CKEditor"
 - Translation ready
 - Auth system (login & logout and forget password)
-
+------------
+[![](https://s16.picofile.com/file/8419124942/buy_me_a_coffee.png)](https://www.blockchain.com/btc/payment_request?address=1ChqZPGhxpn6HB1WuQh55S3Mf8RydxMiFk&amount=0.00018711 "Buy me a coffee")
+- You can buy me a coffee so I can turn it into more open source projects :)
 ------------
 ### Special Thanks
 
