@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import generic, View
 from django.db.models import Q
 
@@ -54,7 +55,9 @@ class BlogCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView
     model = models.Blog
     fields = '__all__'
     success_message = 'Blog was created successfully'
-    success_url = '/create/blog/'
+
+    def get_success_url(self):
+        return reverse('content:blog_create')
 
 
 class BlogArchiveByCategoryPK(generic.ListView):
