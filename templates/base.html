@@ -124,7 +124,12 @@
                             <li><a href="{% url 'content:blog_create' %}">{% translate 'New Blog' %}</a></li>
                         </ul>
                     </li>
-
+                    <li>
+                        <span class="opener">{% translate 'Create Category Object' %}</span>
+                        <ul>
+                            <li><a href="{% url 'content:blog_category_create' %}">{% translate 'New Blog Category' %}</a></li>
+                        </ul>
+                    </li>
                     {% endif %}
                 </ul>
             </nav>
