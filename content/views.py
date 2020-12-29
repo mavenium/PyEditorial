@@ -46,6 +46,15 @@ class Search(View):
         return render(request, self.template_name, context)
 
 
+class BlogCategoryCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    model = models.BlogCategory
+    fields = '__all__'
+    success_message = 'Blog category was created successfully'
+
+    def get_success_url(self):
+        return reverse('content:blog_category_create')
+
+
 class Blog(generic.ListView):
     model = models.Blog
     template_name = 'blog_archive.html'
