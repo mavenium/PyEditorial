@@ -10,6 +10,7 @@ urlpatterns = [
     path('create/blog_category/', views.BlogCategoryCreateView.as_view(), name='blog_category_create'),
     path('blog/<int:pk>/', views.BlogArchiveByCategoryPK.as_view(), name='blog_archive_by_category_pk'),
     path('blog/<str:slug>/', views.BlogSingle.as_view(), name='blog_single'),
+    path('create/video_cast_category/', views.VideoCastCategoryCreateView.as_view(), name='video_cast_category_create'),
     path('video_cast/', views.VideoCast.as_view(), name='video_cast'),
     path('video_cast/<int:pk>/', views.VideoCastArchiveByCategoryPK.as_view(), name='video_cast_archive_by_category_pk'),
     path('video_cast/<str:slug>/', views.VideoCastSingle.as_view(), name='video_cast_single'),
