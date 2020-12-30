@@ -85,6 +85,15 @@ class BlogSingle(generic.DetailView):
         return self.model.objects.filter(slug=self.kwargs['slug'])
 
 
+class VideoCastCategoryCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    model = models.VideoCastCategory
+    fields = '__all__'
+    success_message = 'Video cast category was created successfully'
+
+    def get_success_url(self):
+        return reverse('content:video_cast_category_create')
+
+
 class VideoCast(generic.ListView):
     model = models.VideoCast
     template_name = 'video_cast_archive.html'
