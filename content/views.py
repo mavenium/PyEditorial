@@ -115,6 +115,15 @@ class VideoCastSingle(generic.DetailView):
         return self.model.objects.filter(slug=self.kwargs['slug'])
 
 
+class PodcastCategoryCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    model = models.PodcastCategory
+    fields = '__all__'
+    success_message = 'Podcast category was created successfully'
+
+    def get_success_url(self):
+        return reverse('content:podcast_category_create')
+
+
 class Podcast(generic.ListView):
     model = models.Podcast
     template_name = 'podcast_archive.html'
