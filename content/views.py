@@ -99,6 +99,15 @@ class VideoCast(generic.ListView):
     template_name = 'video_cast_archive.html'
 
 
+class VideoCastCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    model = models.VideoCast
+    fields = '__all__'
+    success_message = 'Video cast was created successfully'
+
+    def get_success_url(self):
+        return reverse('content:video_cast_create')
+
+
 class VideoCastArchiveByCategoryPK(generic.ListView):
     model = models.VideoCast
     template_name = 'video_cast_archive.html'
