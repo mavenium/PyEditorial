@@ -17,6 +17,7 @@ urlpatterns = [
     path('video_cast/<str:slug>/', views.VideoCastSingle.as_view(), name='video_cast_single'),
     path('create/podcast_category/', views.PodcastCategoryCreateView.as_view(), name='podcast_category_create'),
     path('podcast/', views.Podcast.as_view(), name='podcast'),
+    path('create/podcast/', views.PodcastCreateView.as_view(), name='podcast_create'),
     path('podcast/<int:pk>/', views.PodArchiveByCategoryPK.as_view(), name='podcast_archive_by_category_pk'),
     path('podcast/<str:slug>/', views.PodSingle.as_view(), name='podcast_single'),
 ]
