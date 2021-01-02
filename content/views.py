@@ -138,6 +138,15 @@ class Podcast(generic.ListView):
     template_name = 'podcast_archive.html'
 
 
+class PodcastCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    model = models.Podcast
+    fields = '__all__'
+    success_message = 'Podcast was created successfully'
+
+    def get_success_url(self):
+        return reverse('content:podcast_create')
+
+
 class PodArchiveByCategoryPK(generic.ListView):
     model = models.Podcast
     template_name = 'podcast_archive.html'
