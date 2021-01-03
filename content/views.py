@@ -161,3 +161,12 @@ class PodSingle(generic.DetailView):
 
     def get_queryset(self):
         return self.model.objects.filter(slug=self.kwargs['slug'])
+
+
+class SkillCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    model = models.Skill
+    fields = '__all__'
+    success_message = 'Skill was created successfully'
+
+    def get_success_url(self):
+        return reverse('content:skill_create')
