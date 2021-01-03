@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<section>
+    <header class="main">
+        <h1>{% translate 'Create Skill' %}</h1>
+    </header>
+	<div class="row">
+		<div class="col-12 col-12-small">
+
+	        {% if messages %}
+				<h2>{% translate 'Messages :' %}</h2>
+				<ul>
+	            {% for message in messages %}
+	                <li>{{ message }}</li>
+	            {% endfor %}
+				</ul>
+	        {% endif %}
+
+            {% if form.errors %}
+				<h2>{% translate 'Errors :' %}</h2>
+				<ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error|escape }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error|escape }}</li>
+                {% endfor %}
+				</ul>
+            {% endif %}
+
+			<form method="post" id="auth_form" enctype="multipart/form-data">
+				{% csrf_token %}
+
+				<div class="row gtr-uniform">
+
+					<div class="col-6">
+						{{ form.title.label_tag }}
+						{{ form.title }}
+					</div>
+
+					<div class="col-6">
+						{{ form.icon.label_tag }}
+						{{ form.icon }}
+					</div>
+
+					<div class="col-12">
+						{{ form.description.label_tag }}
+						{{ form.description }}
+					</div>
+
+					<div class="col-12">
+						<input type="submit" value="{% translate 'Add Skill' %}" class="button primary">
+					</div>
+
+				</div>
+
+
+			</form>
+		</div>
+	</div>
+</section>
+{% endblock content %}
+
+{% block custom_script %}
+	<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+	<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% endblock custom_script %}
