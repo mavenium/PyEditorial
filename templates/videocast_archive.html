@@ -6,20 +6,20 @@
     <section id="archive">
         <header class="major">
             <h2>
-                {% translate 'Video Cast Archive' %}
+                {% translate 'Videocast Archive' %}
             </h2>
         </header>
         <div class="posts">
             {% for object in object_list %}
                 <article>
-                    <a href="{% url 'content:video_cast_single' object.slug %}" class="image" title="{{ object.title }}">
+                    <a href="{% url 'content:videocast_single' object.slug %}" class="image" title="{{ object.title }}">
                         <img src="{{ object.thumbnail.url }}" alt="{{ object.title }}"/>
                     </a>
                     <h3>{{ object.title }}</h3>
                     <p>{{ object.content | safe | truncatewords_html:30 }}</p>
                     <ul class="actions">
                         <li>
-                            <a href="{% url 'content:video_cast_single' object.slug %}" class="button" title="{{ object.title }}">
+                            <a href="{% url 'content:videocast_single' object.slug %}" class="button" title="{{ object.title }}">
                                 {% translate 'More' %}
                             </a>
                         </li>

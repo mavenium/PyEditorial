@@ -17,7 +17,7 @@ class Index(View):
             'last_blog': models.Blog.objects.order_by('-pk').filter(publish=True)[:1],
             'skills': models.Skill.objects.all(),
             'blogs': models.Blog.objects.order_by('-pk').filter(publish=True)[1:5],
-            'video_casts': models.Videocast.objects.order_by('-pk').filter(publish=True)[:4]
+            'videocasts': models.Videocast.objects.order_by('-pk').filter(publish=True)[:4]
         }
         return render(request, self.template_name, context)
 
@@ -91,12 +91,12 @@ class VideocastCategoryCreateView(LoginRequiredMixin, SuccessMessageMixin, gener
     success_message = 'Video cast category was created successfully'
 
     def get_success_url(self):
-        return reverse('content:video_cast_category_create')
+        return reverse('content:videocast_category_create')
 
 
 class Videocast(generic.ListView):
     model = models.Videocast
-    template_name = 'video_cast_archive.html'
+    template_name = 'videocast_archive.html'
 
 
 class VideocastCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
@@ -105,12 +105,12 @@ class VideocastCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.Creat
     success_message = 'Video cast was created successfully'
 
     def get_success_url(self):
-        return reverse('content:video_cast_create')
+        return reverse('content:videocast_create')
 
 
 class VideocastArchiveByCategoryPK(generic.ListView):
     model = models.Videocast
-    template_name = 'video_cast_archive.html'
+    template_name = 'videocast_archive.html'
 
     def get_queryset(self):
         return self.model.objects.filter(category=self.kwargs['pk'])

@@ -74,16 +74,16 @@
             <h2>{% translate 'The latest Video Casts' %}</h2>
         </header>
         <div class="posts">
-            {% for video_cast in video_casts %}
+            {% for videocast in videocasts %}
                 <article>
-                    <a href="{% url 'content:video_cast_single' video_cast.slug %}" class="image" title="{{ video_cast.title }}">
-                        <img src="{{ video_cast.thumbnail.url }}" alt="{{ video_cast.title }}"/>
+                    <a href="{% url 'content:videocast_single' videocast.slug %}" class="image" title="{{ videocast.title }}">
+                        <img src="{{ videocast.thumbnail.url }}" alt="{{ videocast.title }}"/>
                     </a>
-                    <h3>{{ video_cast.title }}</h3>
-                    <p>{{ video_cast.content | safe | truncatewords_html:30 }}</p>
+                    <h3>{{ videocast.title }}</h3>
+                    <p>{{ videocast.content | safe | truncatewords_html:30 }}</p>
                     <ul class="actions">
                         <li>
-                            <a href="{% url 'content:video_cast_single' video_cast.slug %}" class="button" title="{{ video_cast.title }}">{% translate 'More' %}</a>
+                            <a href="{% url 'content:videocast_single' videocast.slug %}" class="button" title="{{ videocast.title }}">{% translate 'More' %}</a>
                         </li>
                     </ul>
                 </article>

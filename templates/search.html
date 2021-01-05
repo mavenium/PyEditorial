@@ -18,7 +18,7 @@
             
             {% for videocast in videocasts %}
                 <article>
-                    <a href="{% url 'content:video_cast_single' videocast.slug %}" title="{{ videocast.title }}">
+                    <a href="{% url 'content:videocast_single' videocast.slug %}" title="{{ videocast.title }}">
                         <h3>{{ videocast.title }}</h3>
                     </a>                    
                     <p>{{ videocast.content | safe | truncatewords_html:10 }}</p>

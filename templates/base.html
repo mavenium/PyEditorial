@@ -94,12 +94,12 @@
                             {% endfor %}
                         </ul>
                     </li>
-                    <li><a href="{% url 'content:video_cast' %}">{% translate 'Video Cast' %}</a></li>
+                    <li><a href="{% url 'content:videocast' %}">{% translate 'Videocast' %}</a></li>
                     <li>
-                        <span class="opener">{% translate 'Video Cast Categories' %}</span>
+                        <span class="opener">{% translate 'Videocast Categories' %}</span>
                         <ul>
-                            {% for video_cast_category in video_cast_categories %}
-                                <li><a href="{% url 'content:video_cast_archive_by_category_pk' video_cast_category.pk %}">{{ video_cast_category.title }}</a></li>
+                            {% for videocast_category in videocast_categories %}
+                                <li><a href="{% url 'content:videocast_archive_by_category_pk' videocast_category.pk %}">{{ videocast_category.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
@@ -122,7 +122,7 @@
                         <span class="opener">{% translate 'Create New Objects' %}</span>
                         <ul>
                             <li><a href="{% url 'content:blog_create' %}">{% translate 'New Blog' %}</a></li>
-                            <li><a href="{% url 'content:video_cast_create' %}">{% translate 'New Video Cast' %}</a></li>
+                            <li><a href="{% url 'content:videocast_create' %}">{% translate 'New Videocast' %}</a></li>
                             <li><a href="{% url 'content:podcast_create' %}">{% translate 'New Podcast' %}</a></li>
                             <li><a href="{% url 'content:skill_create' %}">{% translate 'New Skill' %}</a></li>
                         </ul>
@@ -131,7 +131,7 @@
                         <span class="opener">{% translate 'Create Category Object' %}</span>
                         <ul>
                             <li><a href="{% url 'content:blog_category_create' %}">{% translate 'New Blog Category' %}</a></li>
-                            <li><a href="{% url 'content:video_cast_category_create' %}">{% translate 'New Video Cast Category' %}</a></li>
+                            <li><a href="{% url 'content:videocast_category_create' %}">{% translate 'New Video Cast Category' %}</a></li>
                             <li><a href="{% url 'content:podcast_category_create' %}">{% translate 'New Podcast Category' %}</a></li>
                         </ul>
                     </li>
