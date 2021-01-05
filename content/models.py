@@ -61,7 +61,7 @@ class Blog(models.Model):
         return self.title
 
 
-class VideoCastCategory(models.Model):
+class VideocastCategory(models.Model):
     title = models.CharField(
         max_length=256,
         verbose_name=_('Title :'),
@@ -78,7 +78,7 @@ class VideoCastCategory(models.Model):
         return self.title
 
 
-class VideoCast(models.Model):
+class Videocast(models.Model):
     title = models.CharField(
         max_length=256,
         verbose_name=_('Title :'),
@@ -107,7 +107,7 @@ class VideoCast(models.Model):
         verbose_name=_('Video link :')
     )
     category = models.ManyToManyField(
-        VideoCastCategory
+        VideocastCategory
     )
     content = RichTextUploadingField()
 

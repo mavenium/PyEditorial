@@ -18,7 +18,7 @@ class VideoAdmin(admin.ModelAdmin):
     list_editable = ('publish',)
     list_filter = ('publish', 'category',)
     search_fields = ('title',)
-    models.VideoCast.display_category.short_description = _('Categories')
+    models.Videocast.display_category.short_description = _('Categories')
     prepopulated_fields = {'slug': ('title',)}
 
 
@@ -33,8 +33,8 @@ class PodcastAdmin(admin.ModelAdmin):
 
 admin.site.register(models.BlogCategory)
 admin.site.register(models.Blog, BlogAdmin)
-admin.site.register(models.VideoCastCategory)
-admin.site.register(models.VideoCast, VideoAdmin)
+admin.site.register(models.VideocastCategory)
+admin.site.register(models.Videocast, VideoAdmin)
 admin.site.register(models.Podcast, PodcastAdmin)
 admin.site.register(models.PodcastCategory)
 admin.site.register(models.Skill)

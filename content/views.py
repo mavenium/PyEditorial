@@ -17,7 +17,7 @@ class Index(View):
             'last_blog': models.Blog.objects.order_by('-pk').filter(publish=True)[:1],
             'skills': models.Skill.objects.all(),
             'blogs': models.Blog.objects.order_by('-pk').filter(publish=True)[1:5],
-            'video_casts': models.VideoCast.objects.order_by('-pk').filter(publish=True)[:4]
+            'video_casts': models.Videocast.objects.order_by('-pk').filter(publish=True)[:4]
         }
         return render(request, self.template_name, context)
 
@@ -34,7 +34,7 @@ class Search(View):
                 'blogs': models.Blog.objects.order_by('-pk').filter(
                     Q(title__icontains=query) | Q(content__icontains=query)
                 ),
-                'videocasts': models.VideoCast.objects.order_by('-pk').filter(
+                'videocasts': models.Videocast.objects.order_by('-pk').filter(
                     Q(title__icontains=query) | Q(content__icontains=query)
                 ),
                 'podcasts': models.Podcast.objects.order_by('-pk').filter(
@@ -85,8 +85,8 @@ class BlogSingle(generic.DetailView):
         return self.model.objects.filter(slug=self.kwargs['slug'])
 
 
-class VideoCastCategoryCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
-    model = models.VideoCastCategory
+class VideocastCategoryCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    model = models.VideocastCategory
     fields = '__all__'
     success_message = 'Video cast category was created successfully'
 
@@ -94,13 +94,13 @@ class VideoCastCategoryCreateView(LoginRequiredMixin, SuccessMessageMixin, gener
         return reverse('content:video_cast_category_create')
 
 
-class VideoCast(generic.ListView):
-    model = models.VideoCast
+class Videocast(generic.ListView):
+    model = models.Videocast
     template_name = 'video_cast_archive.html'
 
 
-class VideoCastCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
-    model = models.VideoCast
+class VideocastCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    model = models.Videocast
     fields = '__all__'
     success_message = 'Video cast was created successfully'
 
@@ -108,16 +108,16 @@ class VideoCastCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.Creat
         return reverse('content:video_cast_create')
 
 
-class VideoCastArchiveByCategoryPK(generic.ListView):
-    model = models.VideoCast
+class VideocastArchiveByCategoryPK(generic.ListView):
+    model = models.Videocast
     template_name = 'video_cast_archive.html'
 
     def get_queryset(self):
         return self.model.objects.filter(category=self.kwargs['pk'])
 
 
-class VideoCastSingle(generic.DetailView):
-    model = models.VideoCast
+class VideocastSingle(generic.DetailView):
+    model = models.Videocast
     template_name = 'single.html'
 
     def get_queryset(self):
