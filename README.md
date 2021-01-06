@@ -6,20 +6,21 @@ A free, open-source Blog CMS based on the "Django" and "Editorial" HTML5 theme.
 ------------
 ### Features
 
-- Has a "Blog" section to create and edit a blog + Blog Category
-- Has a "Video Cast" section to create and edit a video cast + Video cast Category
-- Has a "Podcast" section to create and edit a podcast + podcast Category
-- Has a "Skill" section to create and edit a skill
-- Has a "CONSTANCE" Section to manage dynamic Django settings (Blog title, Social Networks links and ...)
+- "Blog" section to create and edit a blog + Blog Category
+- "Videocast" section to create and edit a videocast + Videocast Category
+- "Podcast" section to create and edit a podcast + podcast Category
+- "Skill" section to create and edit a skill
+- "CONSTANCE" Section to manage dynamic Django settings (Blog title, Social Networks links and ...)
 - Displays the list of Blog posts as paged in archive
-- Displays the list of Video cast as paged in archive
+- Displays the list of Videocast as paged in archive
 - Displays the list of podcast as paged in archive
 - Used "Django Admin" to manage all models
 - Used "Editorial" theme by HTML5 UP
 - Used "Sqlite" to create DB
 - Used "CKEditor"
 - Translation ready
-- Auth system (login & logout and forget password)
+- Auth system (login & logout and forget a password)
+- Front-end forms to create new object
 ------------
 [![](https://s16.picofile.com/file/8419124942/buy_me_a_coffee.png)](https://www.blockchain.com/btc/payment_request?address=1ChqZPGhxpn6HB1WuQh55S3Mf8RydxMiFk&amount=0.00018711 "Buy me a coffee")
 - You can buy me a coffee so I can turn it into more open source projects :)
@@ -86,12 +87,13 @@ python manage.py collectstatic		                        # Create statics files
 python manage.py runserver		                        # Run the project
 ```
 3. Go to  `http://127.0.0.1:8000/` to use project
-                
+------------
+### Notes
+The Editorial template is released under license "Creative Commons Attribution 3.0 Unported".
+
 ------------
 ### TODO list
 
-- [ ] Create useful tests
 - [x] Create search section
 - [x] Create user Login/Logout forms in front-end
 - [x] Create dynamic forms to add contents in front-end
-- [ ] Create REST-API
