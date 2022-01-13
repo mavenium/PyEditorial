@@ -4,7 +4,7 @@ django-ckeditor==6.0.0
 django-constance==2.8.0
 django-js-asset==1.2.2
 django-picklefield==3.0.1
-Pillow==8.3.2
+Pillow==9.0.0
 python-memcached==1.59
 pytz==2020.4
 six==1.15.0
