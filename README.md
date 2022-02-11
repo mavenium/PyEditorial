@@ -88,6 +88,18 @@ python manage.py runserver		                        # Run the project
 ```
 3. Go to  `http://127.0.0.1:8000/` to use project
 ------------
+------------
+### Run with Docker
+
+1. Install Docker on your operating system
+2. Install docker-compose on your operating system
+3. Run the following command to create and run the project
+```
+docker-compose up [-d]
+```
+3. Go to  `http://127.0.0.1:8000/` to use project
+------------
+
 ### Notes
 The Editorial template is released under license "Creative Commons Attribution 3.0 Unported".
 
