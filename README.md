@@ -25,14 +25,14 @@ A free, open-source Blog CMS based on the "Django" and "Editorial" HTML5 theme.
 - Auth system (login & logout and forget a password)
 - Front-end forms to create new object
 ------------
-[![](https://s16.picofile.com/file/8419124942/buy_me_a_coffee.png)](https://www.blockchain.com/btc/payment_request?address=1ChqZPGhxpn6HB1WuQh55S3Mf8RydxMiFk&amount=0.00018711 "Buy me a coffee")
+[![](https://i.ibb.co/mtmbfhp/buy-me-a-coffee.png)](https://www.blockchain.com/btc/payment_request?address=1ChqZPGhxpn6HB1WuQh55S3Mf8RydxMiFk&amount=0.00018711 "Buy me a coffee")
 - You can buy me a coffee so I can turn it into more open source projects :)
 ------------
 ### Special Thanks
 
 | Python | Django | Pycharm |
 | ------------- | ------------- | ------------- |
-| [![](https://s17.picofile.com/file/8418101118/python.png)](https://www.python.org "Python")  | [![](https://s17.picofile.com/file/8418100976/django.png)](https://www.djangoproject.com "Django")  | [![](https://s17.picofile.com/file/8418101034/pycharm.png)](https://www.jetbrains.com/pycharm/ "Pycharm")  |
+| [![](https://s17.picofile.com/file/8418101118/python.png)](https://www.python.org "Python")  | [![](https://i.ibb.co/KbJPgRr/django.png)](https://www.djangoproject.com "Django")  | [![](https://s17.picofile.com/file/8418101034/pycharm.png)](https://www.jetbrains.com/pycharm/ "Pycharm")  |
 
 ------------
 ### Screenshots
