@@ -76,7 +76,7 @@ A free, open-source Blog CMS based on the "Django" and "Editorial" HTML5 theme.
 ------------
 ### How to install and run (GNU/Linux and Mac)
                 
-1. Install `git`,`python3`, `pip3`, `virtualenv` in your operating system
+1. Install [git](https://git-scm.com/downloads),[python3](https://www.python.org/downloads/), `pip3`, [virtualenv](https://pypi.org/project/virtualenv/) in your operating system
 2. Create a development environment ready by using these commands
 ```
 git clone https://github.com/mavenium/PyEditorial		# clone the project
@@ -100,7 +100,7 @@ python manage.py runserver		                        # Run the project
 ```
 docker-compose up [-d]
 ```
-3. Go to  `http://127.0.0.1:8000/` to use project
+3. Go to  `http://127.0.0.1:80/` or just type `localhost` in your browser to use project
 ------------
 
 ### Notes
