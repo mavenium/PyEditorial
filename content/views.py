@@ -28,7 +28,6 @@ class Search(View):
     def get(self, request, *args, **kwargs):
         form = SearchForm(self.request.GET)
         if form.is_valid():
-            print('valid')
             query = form.cleaned_data['query']
             context = {
                 'blogs': models.Blog.objects.order_by('-pk').filter(
