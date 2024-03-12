@@ -6,8 +6,9 @@ COPY . .
 # install requirements
 RUN pip install -r requirements.txt
 
-# migrations
-RUN python manage.py makemigrations content
-RUN python manage.py migrate
-# static
-RUN python manage.py collectstatic --noinput
+COPY /entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+RUN ./entrypoint.sh
+
