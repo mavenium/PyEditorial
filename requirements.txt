@@ -1,4 +1,4 @@
-asgiref==3.3.1
+asgiref
 Django==3.2.24
 django-ckeditor==6.0.0
 django-constance==2.8.0
