@@ -1,6 +1,12 @@
 version: "3.6"
 
 services:
+ db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+    - ./.env.db
  web:
     build:
      context: .
@@ -10,4 +16,8 @@ services:
       - ./:/code
     ports:
       - "8000:8000"
+    depends_on:
+      - db    
 
+volumes:
+  postgres_data:
