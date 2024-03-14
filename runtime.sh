@@ -11,7 +11,7 @@ docker-compose down;
 docker-compose build;
 docker-compose up -d;
 
-sleep 15 
+sleep 10
 
 docker-compose exec web python manage.py migrate --noinput
 
