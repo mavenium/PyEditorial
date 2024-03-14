@@ -11,7 +11,7 @@ services:
     build:
      context: .
      dockerfile: Dockerfile
-    command: ./manage.py runserver 0.0.0.0:8000
+    command: gunicorn PyEditorial.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./:/code
     ports:
