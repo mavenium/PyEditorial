@@ -10,3 +10,4 @@ pytz==2020.4
 six==1.15.0
 sqlparse==0.4.4
 psycopg2==2.9.9
+gunicorn==21.0.1
