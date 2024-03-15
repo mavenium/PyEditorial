@@ -14,8 +14,8 @@ services:
     command: gunicorn PyEditorial.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./:/code
-      - static:/code/static
-      - media:/code/media
+      - static_volume:/code/static
+      - media_volume:/code/media
     ports:
       - "8000:8000"
     depends_on:
@@ -24,14 +24,15 @@ services:
     build: ./nginx
     volumes:
       - ./:/code
-      - static:/code/static
-      - media:/code/media
+      - static_volume:/code/static
+      - media_volume:/code/media
     ports:
+      - "8080:443"
       - "3000:80"
     depends_on:
     - web
 
 volumes:
   postgres_data:
-  static:
-  media:
+  static_volume:
+  media_volume:
