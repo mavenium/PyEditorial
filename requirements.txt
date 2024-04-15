@@ -8,4 +8,4 @@ Pillow==10.2.0
 python-memcached==1.59
 pytz==2020.4
 six==1.15.0
-sqlparse==0.4.4
+sqlparse==0.5.0
