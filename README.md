@@ -84,7 +84,6 @@ cd PyEditorial		                                        # go to the project DIR
 virtualenv -p python3 .venv		                        # Create virtualenv named .venv
 source .venv/bin/activate		                        # Active virtualenv named .venv
 pip install -r requirements.txt		                        # Install project requirements in .venv
-python manage.py makemigrations		                        # Create migrations files
 python manage.py migrate		                        # Create database tables
 python manage.py collectstatic		                        # Create statics files
 python manage.py runserver		                        # Run the project
