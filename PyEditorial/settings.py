@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -165,7 +165,7 @@ CONSTANCE_IGNORE_ADMIN_VERSION_CHECK = True
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
         'LOCATION': '127.0.0.1:11211',
     }
 }
@@ -233,3 +233,6 @@ CONSTANCE_CONFIG_FIELDSETS = {
 LOGIN_REDIRECT_URL = 'content:index'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'content:index'
+
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
